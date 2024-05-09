@@ -1,7 +1,9 @@
 import '../css/home.css'
+import { Footer } from "./footer.jsx"
 
 export const Home = () => {
     return (
+        <>
         <div>
             {/* <div classNameName="cart">
                 <a href="cart.html"><i className="fa-solid fa-cart-shopping"></i></a>
@@ -160,5 +162,8 @@ export const Home = () => {
                                                         </div>
                                                     </div>
                                                 </div>
+                                               
+                                                <Footer />
+                                                </>
                                                 )
 }
