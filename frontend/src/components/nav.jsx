@@ -1,3 +1,5 @@
+import bakelogo from '../imgs/bake.png'
+
 export const Nav = () => {
     return (
         <nav>
@@ -5,7 +7,7 @@ export const Nav = () => {
             <label htmlFor="check" className="checkbtn">
                 <i className="fas fa-bars"></i>
             </label>
-            <a href="index.html"><img className="logo" src="./images/logo.png" alt="" /></a>
+            <a href="index.html"><img className="logo" src={bakelogo} alt="" /></a>
             <ul>
                 <li><a href="index.html"><i className="fa-solid fa-house"></i>Home</a></li>
                 <li><a href="menu.html"><i className="fa-solid fa-book-open"></i>Menu</a></li>
