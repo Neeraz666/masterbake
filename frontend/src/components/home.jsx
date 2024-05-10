@@ -1,16 +1,21 @@
 import '../css/home.css'
+import '../css/menu.css'
 import { Footer } from "./footer.jsx"
+import { Nav } from './nav.jsx'
+import xpimg1 from '../imgs/xp.jpg'
+import xpimg2 from '../imgs/xp2.jpg'
 
 export const Home = () => {
     return (
         <>
         <div>
-            {/* <div classNameName="cart">
+            < Nav />
+            <div className="cart">
                 <a href="cart.html"><i className="fa-solid fa-cart-shopping"></i></a>
-            </div> */}
+            </div>
             <div className="container">
                 <div className="pamplet">
-                    <img src="./images/pamplet.jpg" alt="" />
+                    <img src={xpimg2} alt="" />
                     <div className="ptext">
                         <h1>Take a bite of</h1>
                     </div>
@@ -19,14 +24,14 @@ export const Home = () => {
                     </div>
                 </div>
             </div>
-            <div classNameName="topic" style={{ textAlign: 'left' }}>
+            <div className="topic" style={{ textAlign: 'left' }}>
                 <h1>Trending Today</h1>
             </div>
             <div className="menu-container">
                 <div className="gallery">
 
                     <div className="productlist">
-                        <img src="./images/roastedchicken.png" alt="" />
+                        <img src={xpimg1} alt="" />
                             <h3>Whole roasted chicken</h3>
                             <h6>$12.00</h6>
                             <ul>
@@ -42,7 +47,7 @@ export const Home = () => {
                     </div>
 
                     <div className="productlist">
-                        <img src="./images/chickenburger.avif" alt="" />
+                        <img src={xpimg1} alt="" />
                             <h3>Chicken Burger</h3>
                             <h6>$16.00</h6>
                             <ul>
