@@ -13,6 +13,7 @@ export const Nav = () => {
                 <li><a href="menu.html"><i className="fa-solid fa-book-open"></i>Menu</a></li>
                 <li><a href="offers.html"><i className="fa-solid fa-newspaper fa-bounce"></i>Offers</a></li>
                 <li><a href="about-us.html"><i className="fa-solid fa-company"></i>About Us</a></li>
+                <li><a href="about-us.html"><i className="fa-solid fa-company"></i>Sign In</a></li>
             </ul>
         </nav>
     )

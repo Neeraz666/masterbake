@@ -4,7 +4,7 @@
   }
   .flyer img{
     width: 100%;
-    /* display: none; */
+    display: none;
     padding-top: 60px;
   }
   .offer-buy{

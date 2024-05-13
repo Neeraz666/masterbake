@@ -115,7 +115,7 @@ export const Home = () => {
 
                 <div className="offers" style={{ paddingTop: '0px' }}>
                     <div className="flyer">
-                        <img className="img" src={xpimg1} alt="lfbasflasjb" />
+                        <img className="img" src={xpimg1} alt="" />
                         <img className="img" src={xpimg2} alt="" />
                         <img className="img" src={xpimg1} alt="" />
                     </div>
