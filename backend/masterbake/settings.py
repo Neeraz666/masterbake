@@ -179,7 +179,7 @@ SIMPLE_JWT = {
 
 
 # Custom User Model is added here
-# AUTH_USER_MODEL = 'users.UserAccount'
+AUTH_USER_MODEL = 'users.UserAccount'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

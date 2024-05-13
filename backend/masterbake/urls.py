@@ -27,3 +27,11 @@ urlpatterns = [
     path('api/users/', include('users.urls')),
     path('admin/', admin.site.urls),
 ]
+
+# MEDIA settings is set so that all medias will be saved in MEDIA folder
+
+from django.conf import settings
+from django.conf.urls.static import static
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
