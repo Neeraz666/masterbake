@@ -8,6 +8,7 @@ class ImageAdmin(admin.TabularInline):
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = ['category', 'name'] 
+    search_fields = ('name',)
     inlines = [ImageAdmin]
 
 admin.site.register(Category)
