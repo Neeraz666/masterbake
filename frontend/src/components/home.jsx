@@ -1,8 +1,6 @@
 import '../css/home.css'
 import '../css/menu.css'
 import '../css/offers.css'
-import { Footer } from "./footer.jsx"
-import { Nav } from './nav.jsx'
 import xpimg1 from '../imgs/xp.jpg'
 import xpimg2 from '../imgs/xp2.jpg'
 import chef from '../imgs/chef.png'
@@ -11,7 +9,6 @@ export const Home = () => {
     return (
         <>
             <div>
-                < Nav />
                 <div className="cart">
                     <a href="cart.html"><i className="fa-solid fa-cart-shopping"></i></a>
                 </div>
@@ -169,8 +166,6 @@ export const Home = () => {
                     </div>
                 </div>
             </div>
-
-            <Footer />
         </>
     )
 }
