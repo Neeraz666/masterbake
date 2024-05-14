@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
     'corsheaders',
-    'users'
+    'users',
+    'products',    
 ]
 
 CORS_ORGIN_WHITELIST = [
