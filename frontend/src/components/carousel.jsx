@@ -1,120 +1,50 @@
-import React from 'react';
-import '../css/carousel.scss';
+import React, { useEffect, useState } from 'react';
+import '../css/carousel.css';
+// import '../css/menu.css';
+// import '../css/offers.css';
+import xpimg1 from '../imgs/xp.jpg';
+import xpimg2 from '../imgs/xp2.jpg';
+import chef from '../imgs/chef.png';
 
 export const Carousel = () => {
-  return (
-    <div className="container">
-      <h2 className="carousel-heading">Our Products</h2>
-      <div className='categorycarousel'>
-      </div>
-      <div className="carousel">
-        <input type="radio" name="slides" defaultChecked id="slide-1" />
-        <input type="radio" name="slides" id="slide-2" />
-        <input type="radio" name="slides" id="slide-3" />
-        <input type="radio" name="slides" id="slide-4" />
-        <input type="radio" name="slides" id="slide-5" />
-        <input type="radio" name="slides" id="slide-6" />
-        <ul className="carousel__slides">
-          <li className="carousel__slide">
-            <figure>
-              <div>
-                <img src="https://picsum.photos/id/1041/800/450" alt="" />
-              </div>
-              <figcaption>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                <span className="credit">Photo: Tim Marshall</span>
-              </figcaption>
-            </figure>
-          </li>
-          <li className="carousel__slide">
-            <figure>
-              <div>
-                <img src="https://picsum.photos/id/1043/800/450" alt="" />
-              </div>
-              <figcaption>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                <span className="credit">Photo: Christian Joudrey</span>
-              </figcaption>
-            </figure>
-          </li>
-          <li className="carousel__slide">
-            <figure>
-              <div>
-                <img src="https://picsum.photos/id/1044/800/450" alt="" />
-              </div>
-              <figcaption>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                <span className="credit">Photo: Steve Carter</span>
-              </figcaption>
-            </figure>
-          </li>
-          <li className="carousel__slide">
-            <figure>
-              <div>
-                <img src="https://picsum.photos/id/1045/800/450" alt="" />
-              </div>
-              <figcaption>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                <span className="credit">Photo: Aleksandra Boguslawska</span>
-              </figcaption>
-            </figure>
-          </li>
-          <li className="carousel__slide">
-            <figure>
-              <div>
-                <img src="https://picsum.photos/id/1049/800/450" alt="" />
-              </div>
-              <figcaption>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                <span className="credit">Photo: Rosan Harmens</span>
-              </figcaption>
-            </figure>
-          </li>
-          <li className="carousel__slide">
-            <figure>
-              <div>
-                <img src="https://picsum.photos/id/1052/800/450" alt="" />
-              </div>
-              <figcaption>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                <span className="credit">Photo: Annie Spratt</span>
-              </figcaption>
-            </figure>
-          </li>
-        </ul>
-        <ul className="carousel__thumbnails">
-          <li>
-            <label htmlFor="slide-1">
-              <img src="https://picsum.photos/id/1041/150/150" alt="" />
-            </label>
-          </li>
-          <li>
-            <label htmlFor="slide-2">
-              <img src="https://picsum.photos/id/1043/150/150" alt="" />
-            </label>
-          </li>
-          <li>
-            <label htmlFor="slide-3">
-              <img src="https://picsum.photos/id/1044/150/150" alt="" />
-            </label>
-          </li>
-          <li>
-            <label htmlFor="slide-4">
-              <img src="https://picsum.photos/id/1045/150/150" alt="" />
-            </label>
-          </li>
-          <li>
-            <label htmlFor="slide-5">
-              <img src="https://picsum.photos/id/1049/150/150" alt="" />
-            </label>
-          </li>
-          <li>
-            <label htmlFor="slide-6">
-              <img src="https://picsum.photos/id/1052/150/150" alt="" />
-            </label>
-          </li>
-        </ul>
-      </div>
-    </div>
-  );
-}
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const images = [xpimg1, xpimg2, chef];
+
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+        }, 3000);
+
+        // Cleanup function to clear the interval when the component unmounts
+        return () => {
+            clearInterval(intervalId);
+        };
+    }, []);
+
+    const goToPrevSlide = () => {
+        setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
+    };
+
+    const goToNextSlide = () => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    };
+
+    return (
+        <>
+            <div className='ourproduct'>
+                <h1>Our Products</h1>
+            </div>
+            <div className="carousel">
+                <button className="prev" onClick={goToPrevSlide}>Prev</button>
+                <div className="card">
+                    <img src={images[currentIndex]} alt="jbasj" className="card__image" />
+                    <div className="card__content">
+                        <h2 className="card__title">Hello</h2>
+                        <p className="card__description">sakjasbf</p>
+                    </div>
+                </div>
+                <button className="next" onClick={goToNextSlide}>Next</button>
+            </div>
+        </>
+    );
+};
