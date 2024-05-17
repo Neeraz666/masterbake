@@ -1,9 +1,8 @@
 // import logo from './logo.svg';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { Home } from './components/home';
-import { Menu } from './components/menu';
-import { Footer } from './components/footer'
 import { Nav } from './components/nav'
+import { Home } from './components/home';
+// import { Footer } from './components/footer'
 import './App.css';
 
 function App() {
@@ -11,10 +10,10 @@ function App() {
     <BrowserRouter>
       < Nav />
       <Routes>
-        <Route path='/' element = {< Home />} />
-        <Route path='menu/' element = {< Menu />} />
+        { <Route path='/' element = {< Home />} />
+        /*<Route path='menu/' element = {< Menu />} /> */}
       </Routes>
-      < Footer />
+      {/* < Footer /> */}
     </BrowserRouter>
   );
 }
