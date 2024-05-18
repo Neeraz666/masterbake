@@ -1,18 +1,24 @@
 import bakelogo from '../imgs/bake.png'
+import '../css/nav.css'
 
 export const Nav = () => {
     return (
         <nav>
-            <input type="checkbox" id="check" />
-            <label htmlFor="check" className="checkbtn">
-                <i className="fas fa-bars"></i>
-            </label>
-            <a href="index.html"><img className="logo" src={bakelogo} alt="" /></a>
-            <ul>
-                <li><a href="/"><i className="fa-solid fa-house"></i>Home</a></li>
-                <li><a href="/menu/"><i className="fa-solid fa-book-open"></i>Menu</a></li>
-                <li><a href="about-us.html"><i className="fa-solid fa-company"></i>Sign In</a></li>
-            </ul>
+            <div class="navbar">
+                <img src={bakelogo} alt="Magnolia Baker" class="logo" />
+                    <div class="navbar-container">
+                        <ul>
+                            <li><a href="/" class="active">HOME</a></li>
+                            <li><a href="/">ABOUT US</a></li>
+                            <li><a href="/">OUR PRODUCTS</a></li>
+                        </ul>
+                    </div>
+                    <div class="login-container">
+                        <a href="#login" class="login-button">
+                            Login
+                        </a>
+                    </div>
+            </div>
         </nav>
     )
 }
