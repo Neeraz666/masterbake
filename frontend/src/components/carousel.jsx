@@ -1,30 +1,38 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import '../css/carousel.css';
-import xpimg1 from '../imgs/xp.jpg';
-import xpimg2 from '../imgs/xp2.jpg';
-import chef from '../imgs/chef.png';
-import bake from '../imgs/bake.png';
 
 export const Carousel = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
-    const images = [xpimg1, xpimg2, chef, bake];
-
-    const totalImages = images.length;
+    const [data, setData] = useState([]);
     const cardsToShow = 3;
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('http://localhost:8000/api/product/category');
+                setData(response.data.results);
+            } catch (error) {
+                console.error('Error fetching data: ', error);
+            }
+        };
+        fetchData();
+    }, []);
+
+    const totalImages = data.length;
 
     useEffect(() => {
         const intervalId = setInterval(() => {
             setCurrentIndex((prevIndex) => (prevIndex + cardsToShow) % totalImages);
         }, 4000);
 
-        // Cleanup function to clear the interval when the component unmounts
         return () => {
             clearInterval(intervalId);
         };
-    }, [totalImages]);
+    }, [totalImages, cardsToShow]);
 
     const goToPrevSlide = () => {
-        setCurrentIndex((prevIndex) => (prevIndex === 0 ? totalImages - cardsToShow : prevIndex - cardsToShow + totalImages) % totalImages);
+        setCurrentIndex((prevIndex) => (prevIndex - cardsToShow + totalImages) % totalImages);
     };
 
     const goToNextSlide = () => {
@@ -41,6 +49,7 @@ export const Carousel = () => {
 
     return (
         <>
+        <div className='carouselcontainer'>
             <div className='ourproduct'>
                 <h1>Our Products</h1>
             </div>
@@ -48,16 +57,19 @@ export const Carousel = () => {
                 <button className="prev" onClick={goToPrevSlide}>Prev</button>
                 <div className="cards-container">
                     {getDisplayedImages().map(index => (
-                        <div className="card" key={index}>
-                            <img src={images[index]} alt={`Image ${index}`} className="card__image" />
-                            <div className="card__content">
-                                <h2 className="card__title">Hello</h2>
-                                <p className="card__description">Description for image {index}</p>
+                        data[index] && (
+                            <div className="card" key={index}>
+                                <img src={data[index].image} alt={`Image ${index}`} className="card__image" />
+                                <div className="card__content">
+                                    <h2 className="card__title">{data[index].name}</h2>
+                                    <p className="card__description">{data[index].description}</p>
+                                </div>
                             </div>
-                        </div>
+                        )
                     ))}
                 </div>
                 <button className="next" onClick={goToNextSlide}>Next</button>
+            </div>
             </div>
         </>
     );
