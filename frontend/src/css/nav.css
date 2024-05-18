@@ -20,7 +20,7 @@
 
   ul {
     list-style-type: none;
-    margin: 0;
+    margin-right: -160px;
     padding: 0;
     display: flex;
   }
@@ -58,23 +58,60 @@
   .login-container {
     display: flex;
     align-items: center;
+    margin: 0 5px;
   }
-
+  
   .login-button {
-    background-color: white;
+    background-color: #ffffff; /* Coral background color */
     border: none;
-    color: black;
-    display: flex;
-    align-items: center;
-    padding: 5px 10px;
-    cursor: pointer;
+    color: rgb(0, 0, 0);
+    padding: 12px 24px; /* Increase padding for better button appearance */
+    border-radius: 30px; /* Rounded border */
     font-size: 18px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
     text-decoration: none;
+    outline: none; /* Remove outline on focus */
+    position: relative;
+    overflow: hidden; /* Hide overflow */
+    animation: pulse 2s infinite alternate; /* Animation */
   }
-
-  .login-button img {
-    height: 20px;
-    margin-right: 5px;
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.05);
+    }
+  }
+  
+  .login-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 300%; /* Set width larger than button to create sliding effect */
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.2); /* Transparent white */
+    transition: all 0.3s ease;
+    border-radius: 50%; /* Create circular effect */
+    z-index: 0;
+    transform: translateX(-50%) scale(0); /* Initially hidden */
+  }
+  
+  .login-button:hover::before {
+    transform: translateX(-50%) scale(2); /* Scale up and reveal on hover */
+  }
+  
+  .login-button:hover {
+    background-color: #c7bdbd2c; /* Darker coral shade on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+  }
+  
+  .login-button span {
+    position: relative;
+    z-index: 1;
   }

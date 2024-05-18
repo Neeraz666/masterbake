@@ -18,6 +18,11 @@ export const Nav = () => {
                             Login
                         </a>
                     </div>
+                    <div class="login-container">
+                        <a href="#signup" class="login-button">
+                            Sign Up
+                        </a>
+                    </div>
             </div>
         </nav>
     )

@@ -34,7 +34,7 @@ export const Home = () => {
             showImage(nextIndex);
         }
 
-        const intervalId = setInterval(showNextImage, 3000);
+        const intervalId = setInterval(showNextImage, 3500);
 
         dots.forEach(dot => {
             dot.addEventListener('click', () => {
