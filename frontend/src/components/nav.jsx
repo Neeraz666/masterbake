@@ -1,24 +1,26 @@
-import masterbakelogo from '../imgs/masterbakelogo.png'
-import '../css/nav.css'
+import masterbakelogo from '../imgs/masterbakelogo.png';
+import '../css/nav.css';
 
 export const Nav = () => {
     return (
         <nav>
-            <div class="navbar">
-                <img src={masterbakelogo} alt="Magnolia Baker" class="logo" />
-                    <div class="navbar-container">
-                        <ul>
-                            <li><a href="/" class="active">HOME</a></li>
-                            <li><a href="/">ABOUT US</a></li>
-                            <li><a href="/">OUR PRODUCTS</a></li>
-                        </ul>
-                    </div>
-                    <div class="login-container">
-                        <a href="login" class="login-button">
-                            Login
-                        </a>
-                    </div>
+            <div className="navbar">
+                <a href="/" className="logo-link">
+                    <img src={masterbakelogo} alt="MasterBakeoriginallogo" className="logo" />
+                </a>
+                <div className="navbar-container">
+                    <ul>
+                        <li><a href="/" className="active">HOME</a></li>
+                        <li><a href="/">ABOUT US</a></li>
+                        <li><a href="/">OUR PRODUCTS</a></li>
+                    </ul>
+                </div>
+                <div className="login-container">
+                    <a href="/login" className="login-button">
+                        Login
+                    </a>
+                </div>
             </div>
         </nav>
-    )
-}
+    );
+};
