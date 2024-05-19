@@ -1,117 +1,121 @@
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #fffdfd;
-    padding: 10px 40px;
-    font-size: 17px;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fffdfd;
+  padding: 10px 40px;
+  font-size: 17px;
+  position: fixed; /* Make the navbar fixed */
+  top: 0; /* Stick to the top of the viewport */
+  width: 100%; /* Ensure it spans the full width */
+  z-index: 1000; /* Ensure it is above other elements */
+}
 
-  .logo {
-    height: 75px;
-  }
+.logo {
+  height: 75px;
+}
 
-  .navbar-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 1;
-  }
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
 
-  ul {
-    list-style-type: none;
-    margin-right: -160px;
-    padding: 0;
-    display: flex;
-  }
+ul {
+  list-style-type: none;
+  margin-right: -160px;
+  padding: 0;
+  display: flex;
+}
 
-  li {
-    margin-right: 20px;
-  }
+li {
+  margin-right: 20px;
+}
 
-  a {
-    color: rgb(0, 0, 0);
-    text-decoration: none;
-    position: relative;
-  }
+a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  position: relative;
+}
 
-  a::after {
-    content: '';
-    display: block;
-    width: 0;
-    height: 2px;
-    background: black;
-    transition: width 0.3s;
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-  }
+a::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: black;
+  transition: width 0.3s;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+}
 
-  a:hover::after {
-    width: 100%;
-  }
+a:hover::after {
+  width: 100%;
+}
 
-  .active {
-    font-weight: bold;
-  }
+.active {
+  font-weight: bold;
+}
 
-  .login-container {
-    display: flex;
-    align-items: center;
-    margin: 0 5px;
+.login-container {
+  display: flex;
+  align-items: center;
+  margin: 0 5px;
+}
+
+.login-button {
+  background-color: #ffffff; /* Coral background color */
+  border: none;
+  color: rgb(0, 0, 0);
+  padding: 12px 24px; /* Increase padding for better button appearance */
+  border-radius: 30px; /* Rounded border */
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  text-decoration: none;
+  outline: none; /* Remove outline on focus */
+  position: relative;
+  overflow: hidden; /* Hide overflow */
+  animation: pulse 2s infinite alternate; /* Animation */
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
   }
-  
-  .login-button {
-    background-color: #ffffff; /* Coral background color */
-    border: none;
-    color: rgb(0, 0, 0);
-    padding: 12px 24px; /* Increase padding for better button appearance */
-    border-radius: 30px; /* Rounded border */
-    font-size: 18px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-    text-decoration: none;
-    outline: none; /* Remove outline on focus */
-    position: relative;
-    overflow: hidden; /* Hide overflow */
-    animation: pulse 2s infinite alternate; /* Animation */
+  100% {
+    transform: scale(1.05);
   }
-  
-  @keyframes pulse {
-    0% {
-      transform: scale(1);
-    }
-    100% {
-      transform: scale(1.05);
-    }
-  }
-  
-  .login-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 300%; /* Set width larger than button to create sliding effect */
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.2); /* Transparent white */
-    transition: all 0.3s ease;
-    border-radius: 50%; /* Create circular effect */
-    z-index: 0;
-    transform: translateX(-50%) scale(0); /* Initially hidden */
-  }
-  
-  .login-button:hover::before {
-    transform: translateX(-50%) scale(2); /* Scale up and reveal on hover */
-  }
-  
-  .login-button:hover {
-    background-color: #c7bdbd2c; /* Darker coral shade on hover */
-    transform: translateY(-2px);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
-  }
-  
-  .login-button span {
-    position: relative;
-    z-index: 1;
-  }
+}
+
+.login-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 300%; /* Set width larger than button to create sliding effect */
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.2); /* Transparent white */
+  transition: all 0.3s ease;
+  border-radius: 50%; /* Create circular effect */
+  z-index: 0;
+  transform: translateX(-50%) scale(0); /* Initially hidden */
+}
+
+.login-button:hover::before {
+  transform: translateX(-50%) scale(2); /* Scale up and reveal on hover */
+}
+
+.login-button:hover {
+  background-color: #c7bdbd2c; /* Darker coral shade on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+}
+
+.login-button span {
+  position: relative;
+  z-index: 1;
+}

@@ -14,13 +14,8 @@ export const Nav = () => {
                         </ul>
                     </div>
                     <div class="login-container">
-                        <a href="#login" class="login-button">
+                        <a href="login" class="login-button">
                             Login
-                        </a>
-                    </div>
-                    <div class="login-container">
-                        <a href="#signup" class="login-button">
-                            Sign Up
                         </a>
                     </div>
             </div>
