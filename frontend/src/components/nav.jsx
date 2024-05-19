@@ -1,11 +1,11 @@
-import bakelogo from '../imgs/bake.png'
+import masterbakelogo from '../imgs/masterbakelogo.png'
 import '../css/nav.css'
 
 export const Nav = () => {
     return (
         <nav>
             <div class="navbar">
-                <img src={bakelogo} alt="Magnolia Baker" class="logo" />
+                <img src={masterbakelogo} alt="Magnolia Baker" class="logo" />
                     <div class="navbar-container">
                         <ul>
                             <li><a href="/" class="active">HOME</a></li>

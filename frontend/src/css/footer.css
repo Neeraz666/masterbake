@@ -1,5 +1,5 @@
 footer {
-    background-color:#00302d;
+    background-color: #386d69;
     padding: 20px 0;
     text-align: center;
 }
@@ -24,28 +24,49 @@ footer {
 }
 
 .footer-section p {
-    color: #ffffff;
+    color: #fffefe;
     margin-right: 20px;
 }
 
 .footer-section ul {
-    display: block;
-    margin-left: 40px;
     padding: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column; /* Display links vertically */
+    margin-left: 38px; /* Center the content */
 }
 
 .footer-section ul li {
     margin-bottom: 8px;
+    margin-right: 195px;
 }
 
 .footer-section ul li a {
     text-decoration: none;
-    color: #ffffff;
+    color: #ffffff; /* Set the text color to white */
     transition: color 0.3s ease;
+    position: relative; /* Ensure the line is positioned relative to the link */
 }
 
 .footer-section ul li a:hover {
-    color: #ffffff;
+    color: #f6ecec; /* Change the text color to black on hover */
+}
+
+.footer-section ul li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1.5px;
+    background-color: #000000; /* Change the line color to black */
+    transform: scaleX(0); /* Initially hidden */
+    transition: transform 0.3s ease;
+    display: block; /* Ensure the line only takes the width of the link */
+}
+
+.footer-section ul li a:hover::after {
+    transform: scaleX(1); /* Revealed on hover */
 }
 
 .social-icons {
@@ -62,5 +83,37 @@ footer {
 }
 
 .social-icons a:hover {
+    color: #050303;
+}
+
+.footer-section.follow {
+    flex: 1;
+    padding: 0 20px;
+    margin-bottom: 20px;
+}
+
+.footer-section.follow h2 {
+    margin-bottom: 10px;
     color: #ffffff;
+}
+
+.social-links {
+    margin-top: 10px;
+}
+
+.social-links a {
+    display: inline-block;
+    margin-right: 10px; /* Increase the gap between each social link */
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #cccccc;
+}
+
+.footer-section.social .social-icons img {
+    width: 23px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
 }
