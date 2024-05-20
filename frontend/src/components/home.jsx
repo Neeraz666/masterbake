@@ -3,7 +3,7 @@ import '../css/home.css';
 // import '../css/menu.css';
 // import '../css/offers.css';
 import bake from '../imgs/bake.png';
-import chef from '../imgs/chef.png';
+import chef from '../imgs/chef.jpg';
 import mail from '../imgs/maillogo.png';
 import { Carousel } from './carousel';
 
@@ -34,7 +34,7 @@ export const Home = () => {
             showImage(nextIndex);
         }
 
-        const intervalId = setInterval(showNextImage, 3500);
+        const intervalId = setInterval(showNextImage, 3000);
 
         dots.forEach(dot => {
             dot.addEventListener('click', () => {
