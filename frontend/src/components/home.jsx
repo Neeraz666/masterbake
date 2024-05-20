@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
 import '../css/home.css';
-// import '../css/menu.css';
-// import '../css/offers.css';
-import cookiechef from '../imgs/cookiechef.jpg';
-import factory from '../imgs/factory.jpg';
+
+import chef from '../imgs/chef.jpg';
+import girl from '../imgs/girl.avif';
 import greatmasterbake from '../imgs/greatmasterbake.jpg';
 import { Carousel } from './carousel';
 
@@ -34,7 +33,7 @@ export const Home = () => {
             showImage(nextIndex);
         }
 
-        const intervalId = setInterval(showNextImage, 3500);
+        const intervalId = setInterval(showNextImage, 3000);
 
         dots.forEach(dot => {
             dot.addEventListener('click', () => {
@@ -52,8 +51,8 @@ export const Home = () => {
     return (
         <>
             <div className="gallery">
-                <img src={cookiechef} alt="Delicious dish" className="active" />
-                <img src={factory} alt="Another delicious dish" />
+                <img src={chef} alt="Delicious dish" className="active" />
+                <img src={girl} alt="Another delicious dish" />
                 <img src={greatmasterbake} alt="Chef preparing food" />
                 {/* <!-- Add more images as needed --> */}
                 <div className="pagination">

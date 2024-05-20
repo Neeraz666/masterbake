@@ -5,9 +5,11 @@ export const Nav = () => {
     return (
         <nav>
             <div className="navbar">
-                <a href="/" className="logo-link">
-                    <img src={masterbakelogo} alt="MasterBakeoriginallogo" className="logo" />
-                </a>
+                <div>
+                    <a href="/" className="logo-link">
+                        <img src={masterbakelogo} alt="MasterBakeoriginallogo" className="logo" />
+                    </a>
+                </div>
                 <div className="navbar-container">
                     <ul>
                         <li><a href="/" className="active">HOME</a></li>
