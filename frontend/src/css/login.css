@@ -16,14 +16,15 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background: #f0f0f0;
+  height: 110vh;
+  background: #f8f3f3;
 }
 
 .form_container {
   max-width: 320px;
   width: 100%;
   background: #fff;
+  margin-top: 100px;
   padding: 25px;
   border-radius: 12px;
   box-shadow: rgba(0, 0, 0, 0.1);
@@ -115,11 +116,12 @@ a {
 }
 
 .form_container .button {
-  background: #7d2ae8;
+  background: #eaebde;
   margin-top: 30px;
   width: 100%;
   padding: 10px 0;
   border-radius: 10px;
+  border-color: #fff;
 }
 
 .login_signup {
