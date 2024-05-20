@@ -20,6 +20,32 @@ export const Login = () => {
         setProfilephoto(file);
     }
 
+    const submitlogin = async e => {
+        e.preventDefault();
+
+        const user = {
+            email: email,
+            password: password
+        }
+
+        const {data} = await axios.post('http://localhost:8000/api/token/', user, {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+                withCredentials: true
+        });
+
+        localStorage.clear();
+
+        localStorage.setItem('access_token', data.access);
+
+        localStorage.setItem('refresh_token', data.refresh);
+
+        axios.defaults.headers.common['Authorization'] = `Bearer ${data['access']}`;
+
+        window.location.href = '/'
+    }
+
     const submitsignup = async e => {
         e.preventDefault();
 
@@ -71,7 +97,7 @@ export const Login = () => {
             <div className="form_container">
                 {isLoginForm ? (
                     <div className="form login_form">
-                        <form action="#">
+                        <form action="/" onSubmit={submitlogin}>
                             <h2>Login</h2>
                             <div className="input_box">
                                 <input type="email" placeholder="Enter your email" value={email}  required onChange={(e) => setEmail(e.target.value)} />
@@ -102,7 +128,7 @@ export const Login = () => {
                     </div>
                 ) : (
                     <div className="form signup_form">
-                        <form action="#">
+                        <form action="#" onSubmit={submitsignup}>
                             <h2>Signup</h2>
                             <div className="input_box">
                                 <input type="email" placeholder="Enter your email" value={email} required onChange={(e) => setEmail(e.target.value)} />
