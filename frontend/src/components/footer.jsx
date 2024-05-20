@@ -3,7 +3,6 @@ import facebookLogo from '../imgs/facebooklogo.png';
 import instaLogo from '../imgs/instalogo.png'; // Import the Instagram logo
 import xLogo from '../imgs/xlogo.png'; // Import the X logo
 import maillogo from '../imgs/maillogo.png';
-import masterBakeLogo from '../imgs/masterbakelogo.png';
 import '../css/footer.css';
 
 export const Footer = () => {
