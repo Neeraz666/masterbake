@@ -3,7 +3,7 @@ import '../css/home.css';
 // import '../css/menu.css';
 // import '../css/offers.css';
 import bake from '../imgs/bake.png';
-import chef from '../imgs/chef.png';
+import chef from '../imgs/chef.jpg';
 import mail from '../imgs/maillogo.png';
 import { Carousel } from './carousel';
 
