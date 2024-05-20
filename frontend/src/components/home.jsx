@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import '../css/home.css';
-
-import chef from '../imgs/chef.jpg';
-import girl from '../imgs/girl.avif';
-import greatmasterbake from '../imgs/greatmasterbake.jpg';
+// import '../css/menu.css';
+// import '../css/offers.css';
+import bake from '../imgs/bake.png';
+import chef from '../imgs/chef.png';
+import mail from '../imgs/maillogo.png';
 import { Carousel } from './carousel';
 
 export const Home = () => {
@@ -51,9 +52,9 @@ export const Home = () => {
     return (
         <>
             <div className="gallery">
-                <img src={chef} alt="Delicious dish" className="active" />
-                <img src={girl} alt="Another delicious dish" />
-                <img src={greatmasterbake} alt="Chef preparing food" />
+                <img src={bake} alt="Delicious dish" className="active" />
+                <img src={chef} alt="Another delicious dish" />
+                <img src={mail} alt="Chef preparing food" />
                 {/* <!-- Add more images as needed --> */}
                 <div className="pagination">
                     <span className="dot active" data-index="0"></span>
