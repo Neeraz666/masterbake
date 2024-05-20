@@ -55,6 +55,10 @@ a:hover::after {
   width: 100%;
 }
 
+a.logo-link:hover::after {
+  width: 0; /* Prevent underline effect on logo link */
+}
+
 .active {
   font-weight: bold;
 }
