@@ -11,17 +11,16 @@
 .carousel {
   position: relative;
   overflow: hidden;
-  max-width: 900px;
+  max-width: 1100px;
   margin: auto;
   padding: 0 60px;
 }
 
 .carousel img {
   width: 100%;
-  height: 65%;
+  height: 100%;
   display: block;
-  max-height: 300px;
-  object-fit: cover;
+  object-fit: contain;  /* Ensure the entire image is visible */
   border-radius: 8px 8px 0 0;
 }
 
@@ -41,9 +40,7 @@
 
 .carousel button:hover {
   background-color: rgba(0, 0, 0, 0.9);
-  transform: scale(1.25);
 }
-
 
 .carousel button.prev {
   left: 10px;
@@ -57,10 +54,7 @@
   display: flex;
   gap: 20px;
   padding: 40px;
-  /* transition: transform 0.5s ease-in-out;  */
-  /* Smooth transition */
-  transition:cubic-bezier(0.785, 0.135, 0.15, 0.86);
-
+  transition: cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
 
 .card {
@@ -79,10 +73,17 @@
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2), 0 8px 40px rgba(0, 0, 0, 0.2);
 }
 
+.card__image-container {
+  width: 100%;
+  height: 65%;  /* Set a fixed height for the image container */
+  overflow: hidden;
+  position: relative;
+}
+
 .card__image {
   width: 100%;
-  height: auto;
-  object-fit: cover;
+  height: 100%;
+  object-fit: contain;  /* Ensure the entire image is visible */
 }
 
 .card__content {
