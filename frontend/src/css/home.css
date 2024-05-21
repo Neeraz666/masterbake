@@ -3,7 +3,8 @@
   max-width: 100%;
   margin: auto;
   overflow: hidden;
-  height: 600px; /* Adjust height as needed */
+  height: 810px; /* Adjust height as needed */
+  margin-bottom: 60px;
 }
 
 .gallery img {
