@@ -1,18 +1,37 @@
+/* Ensure to include the existing styles above */
+
+.logo-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 160px; /* Adjust width as needed */
+  height: 145px; /* Adjust height as needed */
+  background-color: #fffdfd;
+  border-bottom-right-radius: 75px; /* Creates the semicircle effect */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  z-index: 1001; /* Above the navbar */
+}
+
+.logo {
+  height: 250px; /* Adjust the logo size */
+  transition: all 0.3s ease;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #fffdfd;
   padding: 10px 40px;
+  height: 80px;
   font-size: 17px;
-  position: fixed; /* Make the navbar fixed */
-  top: 0; /* Stick to the top of the viewport */
-  width: 100%; /* Ensure it spans the full width */
-  z-index: 1000; /* Ensure it is above other elements */
-}
-
-.logo {
-  height: 75px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 .navbar-container {
@@ -56,7 +75,7 @@ a:hover::after {
 }
 
 a.logo-link:hover::after {
-  width: 0; /* Prevent underline effect on logo link */
+  width: 0;
 }
 
 .active {
@@ -70,28 +89,28 @@ a.logo-link:hover::after {
 }
 
 .login-button {
-  background-color: #ffffff; /* Coral background color */
+  background-color: #ffffff;
   border: none;
   color: rgb(0, 0, 0);
-  padding: 12px 24px; /* Increase padding for better button appearance */
-  border-radius: 30px; /* Rounded border */
+  padding: 12px 24px;
+  border-radius: 30px;
   font-size: 18px;
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
   text-decoration: none;
-  outline: none; /* Remove outline on focus */
+  outline: none;
   position: relative;
-  overflow: hidden; /* Hide overflow */
-  animation: pulse 2s infinite alternate; /* Animation */
+  overflow: hidden;
+  animation: pulse 2s infinite alternate;
 }
 
 @keyframes pulse {
   0% {
-    transform: scale(1);
+      transform: scale(1);
   }
   100% {
-    transform: scale(1.05);
+      transform: scale(1.05);
   }
 }
 
@@ -100,23 +119,23 @@ a.logo-link:hover::after {
   position: absolute;
   top: 0;
   left: 50%;
-  width: 300%; /* Set width larger than button to create sliding effect */
+  width: 300%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.2); /* Transparent white */
+  background-color: rgba(255, 255, 255, 0.2);
   transition: all 0.3s ease;
-  border-radius: 50%; /* Create circular effect */
+  border-radius: 50%;
   z-index: 0;
-  transform: translateX(-50%) scale(0); /* Initially hidden */
+  transform: translateX(-50%) scale(0);
 }
 
 .login-button:hover::before {
-  transform: translateX(-50%) scale(2); /* Scale up and reveal on hover */
+  transform: translateX(-50%) scale(2);
 }
 
 .login-button:hover {
-  background-color: #c7bdbd2c; /* Darker coral shade on hover */
+  background-color: #c7bdbd2c;
   transform: translateY(-2px);
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 }
 
 .login-button span {
