@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from .views import LogoutView
 
 # Other required things for django rest framework are imported 
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
@@ -30,6 +31,8 @@ urlpatterns = [
     path('api/users/', include('users.urls')),
 
     path('api/product/', include('products.urls')),
+
+    path('api/logout/', LogoutView.as_view(), name='Logout'),
 
     path('admin/', admin.site.urls),
 ]

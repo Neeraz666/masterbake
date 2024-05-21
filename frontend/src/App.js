@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Nav } from './components/nav';
 import { Home } from './components/home';
@@ -7,19 +7,17 @@ import { Login } from './components/login';
 import './App.css';
 
 function App() {
-
-  const[isAuth, setIsAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(false);
 
   useEffect(() => {
-    if (localStorage.getItem('access_token') != null){
+    if (localStorage.getItem('access_token')) {
       setIsAuth(true);
     }
-  }, [isAuth]
-  );
+  }, []); // Run once on mount
 
   return (
     <BrowserRouter>
-      <Nav isAuth = {isAuth} />
+      <Nav isAuth={isAuth} />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='login' element={<Login />} />

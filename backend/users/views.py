@@ -46,7 +46,6 @@ class SignUpView(APIView):
             
         else:
             return Response({'error': 'Passwords donot match!'})
-        
 
 class UserDetail(ListAPIView):
     permission_classes = (permissions.IsAuthenticated,)

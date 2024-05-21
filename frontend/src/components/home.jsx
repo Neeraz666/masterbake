@@ -19,6 +19,7 @@ export const Home = () => {
 
         let currentIndex = 0;
         const totalImages = images.length;
+        let intervalId;
 
         function showImage(index) {
             if (!images[currentIndex] || !dots[currentIndex]) return;
@@ -34,12 +35,19 @@ export const Home = () => {
             showImage(nextIndex);
         }
 
-        const intervalId = setInterval(showNextImage, 3000);
+        function startInterval() {
+            intervalId = setInterval(showNextImage, 3000);
+        }
+
+        // Start the initial interval
+        startInterval();
 
         dots.forEach(dot => {
             dot.addEventListener('click', () => {
                 const index = parseInt(dot.getAttribute('data-index'), 10);
                 showImage(index);
+                clearInterval(intervalId);
+                startInterval();
             });
         });
 
