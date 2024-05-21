@@ -48,13 +48,14 @@ export const Carousel = () => {
     };
 
     return (
-        <>
         <div className='carouselcontainer'>
             <div className='ourproduct'>
-                <h1>Our Products</h1>
+                <div className="heading">
+                    <h2>Our Products</h2>
+                </div>
             </div>
             <div className="carousel">
-                <button className="prev" onClick={goToPrevSlide}>Prev</button>
+                <button className="prev" onClick={goToPrevSlide}></button>
                 <div className="cards-container">
                     {getDisplayedImages().map(index => (
                         data[index] && (
@@ -70,9 +71,8 @@ export const Carousel = () => {
                         )
                     ))}
                 </div>
-                <button className="next" onClick={goToNextSlide}>Next</button>
+                <button className="next" onClick={goToNextSlide}></button>
             </div>
-            </div>
-        </>
+        </div>
     );
 };
