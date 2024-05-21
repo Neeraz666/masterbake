@@ -59,7 +59,9 @@ export const Carousel = () => {
                     {getDisplayedImages().map(index => (
                         data[index] && (
                             <div className="card" key={index}>
-                                <img src={data[index].image} alt={`Image ${index}`} className="card__image" />
+                                <div className="card__image-container">
+                                    <img src={data[index].image} alt={`Image ${index}`} className="card__image" />
+                                </div>
                                 <div className="card__content">
                                     <h2 className="card__title">{data[index].name}</h2>
                                     <p className="card__description">{data[index].description}</p>
