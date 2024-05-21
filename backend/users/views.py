@@ -1,9 +1,11 @@
 from rest_framework import permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.generics import ListAPIView
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
 from django.contrib.auth import get_user_model
+from .serializers import UserSerializer
 
 
 User = get_user_model()
@@ -44,3 +46,13 @@ class SignUpView(APIView):
             
         else:
             return Response({'error': 'Passwords donot match!'})
+        
+
+class UserDetail(ListAPIView):
+    permission_classes = (permissions.IsAuthenticated,)
+    # queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+    def get_queryset(self):
+        # Filter queryset to return data of the authenticated user only
+        return User.objects.filter(pk=self.request.user.pk)

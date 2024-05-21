@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import masterbakelogo from '../imgs/masterbakelogo.png';
 import '../css/nav.css';
 
-export const Nav = ({ isAuth }) => {
+export const Nav = ({ isAuth, username, userPhoto }) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
     const toggleDropdown = () => {
