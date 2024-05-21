@@ -28,11 +28,14 @@ export const Nav = ({ isAuth, username, userPhoto }) => {
     };
 
     return (
+        <>
+        <div className='logo-container'>
+        <a href="/" className="logo-link">
+            <img src={masterbakelogo} alt="MasterBakeoriginallogo" className="logo" />
+        </a>
+    </div>
         <nav>
             <div className="navbar">
-                <a href="/" className="logo-link">
-                    <img src={masterbakelogo} alt="MasterBakeoriginalLogo" className="logo" />
-                </a>
                 <div className="navbar-container">
                     <ul>
                         <li><a href="/" className="active">HOME</a></li>
@@ -62,5 +65,6 @@ export const Nav = ({ isAuth, username, userPhoto }) => {
                 )}
             </div>
         </nav>
+        </>
     );
 };
