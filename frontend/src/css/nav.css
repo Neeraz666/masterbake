@@ -1,18 +1,35 @@
+.logo-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 160px; /* Adjust width as needed */
+  height: 145px; /* Adjust height as needed */
+  background-color: #fffdfd;
+  border-bottom-right-radius: 75px; /* Creates the semicircle effect */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  z-index: 1001; /* Above the navbar */
+}
+
+.logo {
+  height: 250px; /* Adjust the logo size */
+  transition: all 0.3s ease;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #fffdfd;
   padding: 10px 40px;
+  height: 80px;
   font-size: 17px;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
-}
-
-.logo {
-  height: 75px;
 }
 
 .navbar-container {
