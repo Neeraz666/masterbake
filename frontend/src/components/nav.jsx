@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import masterbakelogo from '../imgs/masterbakelogo.png';
 import '../css/nav.css';
 import { useEffect, useState } from 'react';
@@ -25,7 +26,7 @@ export const Nav = () => {
         <>
             <div className='logo-container'>
                 <a href="/" className="logo-link">
-                    <img src={masterbakelogo} alt="MasterBakeoriginallogo" className="logo" />
+                    <img src={masterbakelogo} alt="MasterBakeoriginalLogo" className="logo" />
                 </a>
             </div>
             <nav>
