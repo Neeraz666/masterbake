@@ -1,5 +1,5 @@
 footer {
-    background-color: rgba(0, 0, 0, 0.85);
+    background-color:rgba(0,0,0,0.85);
     padding: 20px 0;
     text-align: center;
 }
@@ -7,7 +7,7 @@ footer {
 .footer-content {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
+    flex-wrap: wrap;    
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -34,10 +34,8 @@ footer {
     list-style-type: none;
     text-align: center;
     display: flex;
-    flex-direction: column;
-    /* Display links vertically */
-    margin-left: 12rem;
-    /* Center the content */
+    flex-direction: column; /* Display links vertically */
+    margin-left: 12rem; /* Center the content */
 }
 
 .footer-section ul li {
@@ -47,11 +45,9 @@ footer {
 
 .footer-section ul li a {
     text-decoration: none;
-    color: #ffffff;
-    /* Set the text color to white */
+    color: #ffffff; /* Set the text color to white */
     transition: color 0.3s ease;
-    position: relative;
-    /* Ensure the line is positioned relative to the link */
+    position: relative; /* Ensure the line is positioned relative to the link */
 }
 
 .social-icons {
@@ -84,16 +80,14 @@ footer {
 
 .social-links a {
     display: inline-block;
-    margin-right: 10px;
-    /* Increase the gap between each social link */
+    margin-right: 10px; /* Increase the gap between each social link */
     color: #ffffff;
     text-decoration: none;
 }
 
 
 .footer-section.social .social-icons img {
-    width: 23px;
-    /* Adjust the width as needed */
-    height: auto;
-    /* Maintain aspect ratio */
+    width: 23px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
 }
+
