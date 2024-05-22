@@ -11,6 +11,7 @@ export const Footer = () => {
             <div className="footer-content">
                 <div className="footer-section about">
                     <h2>Master Bake</h2>
+
                     <p>Leading bakery factory producing a wide range of treats. Good day starts with masterbake</p>
                     <div className="contact">
                         <p><strong>Email:</strong> masterbake2077@gmail.com</p>

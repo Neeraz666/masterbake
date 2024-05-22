@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'; // Import the Link component
 import masterbakelogo from '../imgs/masterbakelogo.png';
 import axios from 'axios';
 import '../css/nav.css';
@@ -56,7 +57,7 @@ export const Nav = ({ isAuth, username, userPhoto }) => {
   };
 
   return (
-    <>
+    <div className='navcss'>
       <div className='logo-container'>
         <a href="/" className="logo-link">
           <img src={masterbakelogo} alt="MasterBakeoriginal logo" className="logo" />
@@ -66,8 +67,8 @@ export const Nav = ({ isAuth, username, userPhoto }) => {
         <div className="navbar">
           <div className="navbar-container">
             <ul>
-              <li><a href="/" className="active">HOME</a></li>
-              <li><a href="/">ABOUT US</a></li>
+              <li><Link to="/">HOME</Link></li>
+              <li><Link to="/about">ABOUT US</Link></li> {/* Use Link component for navigation */}
               <li><a href="/">OUR PRODUCTS</a></li>
             </ul>
           </div>
@@ -86,13 +87,13 @@ export const Nav = ({ isAuth, username, userPhoto }) => {
             </div>
           ) : (
             <div className="login-container">
-              <a href="/login" className="login-button">
+              <Link to="/login" className="login-button"> {/* Use Link component for login */}
                 Login
-              </a>
+              </Link>
             </div>
           )}
         </div>
       </nav>
-    </>
+      </div>
   );
 };

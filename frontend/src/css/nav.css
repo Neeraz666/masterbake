@@ -1,3 +1,4 @@
+.navcss{
 .logo-container {
   position: fixed;
   top: 0;
@@ -186,4 +187,5 @@ a.logo-link:hover::after {
   border: none;
   color: rgb(0, 0, 0);
   cursor: pointer;
+}
 }
