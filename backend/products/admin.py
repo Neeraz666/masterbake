@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Category, Product, Image 
+from .models import Category, Product, Image, Cart, CartItem, Order, OrderItem
+
 
 class ImageAdmin(admin.TabularInline):
     model = Image
@@ -11,6 +12,43 @@ class ProductAdmin(admin.ModelAdmin):
     search_fields = ('name',)
     inlines = [ImageAdmin]
 
+class CartItemInline(admin.TabularInline):
+    model = CartItem
+    extra = 1
+
+# CartAdmin
+class CartAdmin(admin.ModelAdmin):
+    list_display = ('user', 'created_at', 'updated_at', 'get_total_price')
+    search_fields = ('user__email',)
+    inlines = [CartItemInline]
+
+# CartItemAdmin
+class CartItemAdmin(admin.ModelAdmin):
+    list_display = ('cart', 'product', 'quantity', 'get_total_price')
+    list_filter = ('cart', 'product')
+    search_fields = ('product__name',)
+
+# OrderItemInline for OrderAdmin
+class OrderItemInline(admin.TabularInline):
+    model = OrderItem
+    extra = 1
+
+# OrderAdmin
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ('user', 'created_at', 'updated_at', 'total_price')
+    search_fields = ('user__email',)
+    inlines = [OrderItemInline]
+
+# OrderItemAdmin
+class OrderItemAdmin(admin.ModelAdmin):
+    list_display = ('order', 'product', 'quantity', 'price', 'get_total_price')
+    list_filter = ('order', 'product')
+    search_fields = ('product__name',)
+
 admin.site.register(Category)
 admin.site.register(Image)
 admin.site.register(Product, ProductAdmin)
+admin.site.register(Cart, CartAdmin)
+admin.site.register(CartItem, CartItemAdmin)
+admin.site.register(Order, OrderAdmin)
+admin.site.register(OrderItem, OrderItemAdmin)
