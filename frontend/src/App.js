@@ -5,19 +5,57 @@ import { Home } from './components/home';
 import { Footer } from './components/footer';
 import { Login } from './components/login';
 import './App.css';
+import axios from 'axios';
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
+  const [userData, setUserData] = useState({});
 
   useEffect(() => {
-    if (localStorage.getItem('access_token')) {
+    const accessToken = localStorage.getItem('access_token');
+    if (accessToken) {
       setIsAuth(true);
     }
-  }, []); // Run once on mount
+  }, []);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      const accessToken = localStorage.getItem('access_token');
+      if (!accessToken) {
+        console.error('Access token is missing');
+        return;
+      }
+
+      try {
+        console.log('Fetching user data...');
+        const response = await axios.get('http://localhost:8000/api/users/listuser', {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+        console.log('User data fetched:', response.data);
+        if (response.data.results.length > 0) {
+          setUserData(response.data.results[0]);
+        }
+      } catch (error) {
+        console.error('Error fetching user data: ', error);
+        if (error.response && error.response.status === 401) {
+          alert('Session expired. Please login again.');
+          localStorage.clear();
+          setIsAuth(false);
+          window.location.href = '/login';
+        }
+      }
+    };
+
+    if (isAuth) {
+      fetchUserData();
+    }
+  }, [isAuth]);
 
   return (
     <BrowserRouter>
-      <Nav isAuth={isAuth} />
+      <Nav isAuth={isAuth} userData={userData} />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='login' element={<Login />} />
