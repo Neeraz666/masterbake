@@ -1,0 +1,45 @@
+.about-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 85vh;
+  }
+  
+  .flex-container {
+    display: flex;
+    flex: 1;
+  }
+  
+  .about-us-container {
+    flex: 1;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .about-us-text {
+    text-align: center;
+  }
+  
+  .about-us-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .about-us-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-align: justify;
+    margin: 0 15%;
+  }
+  
+  .image-section {
+    flex: 1;
+  }
+  
+  .image-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
