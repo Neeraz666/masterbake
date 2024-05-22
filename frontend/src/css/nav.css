@@ -1,4 +1,4 @@
-.navcss{
+
 .logo-container {
   position: fixed;
   top: 0;
@@ -19,6 +19,7 @@
   transition: all 0.3s ease;
 }
 
+/* Navbar styling */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -81,6 +82,7 @@ a.logo-link:hover::after {
   font-weight: bold;
 }
 
+/* Login button styling */
 .login-container {
   display: flex;
   align-items: center;
@@ -142,6 +144,7 @@ a.logo-link:hover::after {
   z-index: 1;
 }
 
+/* User info styling */
 .navbar .user-info {
   display: flex;
   align-items: center;
@@ -159,6 +162,7 @@ a.logo-link:hover::after {
   margin-right: 10px;
 }
 
+/* Dropdown menu styling */
 .navbar .user-info .dropdown {
   display: block;
   position: absolute;
@@ -171,14 +175,19 @@ a.logo-link:hover::after {
   z-index: 1;
 }
 
-.navbar .user-info .dropdown a {
+.navbar .user-info .dropdown button {
   color: black;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
-.navbar .user-info .dropdown a:hover {
+.navbar .user-info .dropdown button:hover {
   background-color: #ddd;
 }
 
@@ -187,5 +196,10 @@ a.logo-link:hover::after {
   border: none;
   color: rgb(0, 0, 0);
   cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  transition: background-color 0.3s;
 }
 }

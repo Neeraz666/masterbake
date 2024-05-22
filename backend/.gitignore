@@ -1,6 +1,13 @@
-venv/
-<<<<<<< Updated upstream
+# Django specific files
+*.sqlite3
+db.sqlite3
+
+# Django migrations
+**/migrations/*
+
+# Local environment settings
+.env
+
+# Django compiled files
 *.pyc
-=======
 __pycache__/
->>>>>>> Stashed changes

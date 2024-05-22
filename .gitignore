@@ -1,3 +1,33 @@
-venv
-*.pyc
+# Ignore macOS system files
+.DS_Store
+
+# Ignore node_modules
+node_modules/
+
+# Ignore Python bytecode files
 __pycache__/
+*.py[cod]
+*$py.class
+
+# Ignore logs
+*.log
+*.log.*
+# Ignore macOS system files
+.DS_Store
+
+# Ignore node_modules
+node_modules/
+
+# Ignore Python virtual environments
+venv/
+env/
+.venv/
+
+# Ignore Python bytecode files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignore logs
+*.log
+*.log.*
