@@ -25,12 +25,19 @@ export const Nav = ({ isAuth, username, userPhoto }) => {
 
   const logout = async () => {
     try {
+      const refreshToken = localStorage.getItem('refresh_token');
+      const accessToken = localStorage.getItem('access_token');
+
+      if (!accessToken || !refreshToken) {
+        throw new Error('Tokens are missing');
+      }
+
       await axios.post('http://localhost:8000/api/logout/', {
-        refresh_token: localStorage.getItem('refresh_token')
+        refresh_token: refreshToken
       }, {
         headers: { 
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+          'Authorization': `Bearer ${accessToken}`
         },
       });
 
@@ -39,6 +46,12 @@ export const Nav = ({ isAuth, username, userPhoto }) => {
       window.location.href = '/';
     } catch (e) {
       console.error('Logout not working', e);
+      if (e.response && e.response.status === 401) {
+        // Handle unauthorized error, possibly refresh the token or ask user to login again
+        alert('Session expired. Please login again.');
+        localStorage.clear();
+        window.location.href = '/login';
+      }
     }
   };
 
@@ -46,7 +59,7 @@ export const Nav = ({ isAuth, username, userPhoto }) => {
     <>
       <div className='logo-container'>
         <a href="/" className="logo-link">
-          <img src={masterbakelogo} alt="MasterBakeoriginallogo" className="logo" />
+          <img src={masterbakelogo} alt="MasterBakeoriginal logo" className="logo" />
         </a>
       </div>
       <nav>
