@@ -3,8 +3,12 @@ import masterbakelogo from '../imgs/masterbakelogo.png';
 import axios from 'axios';
 import '../css/nav.css';
 
-export const Nav = ({ isAuth, username, userPhoto }) => {
+export const Nav = ({ isAuth, userData }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  useEffect(() => {
+    console.log('Nav Component userData:', userData);
+  }, [userData]);
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
@@ -47,10 +51,11 @@ export const Nav = ({ isAuth, username, userPhoto }) => {
     } catch (e) {
       console.error('Logout not working', e);
       if (e.response && e.response.status === 401) {
-        // Handle unauthorized error, possibly refresh the token or ask user to login again
         alert('Session expired. Please login again.');
         localStorage.clear();
         window.location.href = '/login';
+      } else {
+        alert('Error during logout. Please try again.');
       }
     }
   };
@@ -59,7 +64,7 @@ export const Nav = ({ isAuth, username, userPhoto }) => {
     <>
       <div className='logo-container'>
         <a href="/" className="logo-link">
-          <img src={masterbakelogo} alt="MasterBakeoriginal logo" className="logo" />
+          <img src={masterbakelogo} alt="MasterBake original logo" className="logo" />
         </a>
       </div>
       <nav>
@@ -73,9 +78,14 @@ export const Nav = ({ isAuth, username, userPhoto }) => {
           </div>
           {isAuth ? (
             <div className="user-info">
-              <img src={userPhoto} alt="User Photo" />
-              <span className="username">{username}</span>
-              <button className="dropdown-button" onClick={toggleDropdown} aria-haspopup="true" aria-expanded={dropdownOpen ? 'true' : 'false'}>
+              {userData.profilephoto && <img src={userData.profilephoto} alt="User Photo" />}
+              {userData.username && <span className="username">{userData.firstname}</span>}
+              <button
+                className="dropdown-button"
+                onClick={toggleDropdown}
+                aria-haspopup="true"
+                aria-expanded={dropdownOpen ? 'true' : 'false'}
+              >
                 ▼
               </button>
               {dropdownOpen && (
