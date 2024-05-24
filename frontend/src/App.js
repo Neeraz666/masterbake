@@ -4,6 +4,9 @@ import { Nav } from './components/nav';
 import { Home } from './components/home';
 import { Footer } from './components/footer';
 import { Login } from './components/login';
+import { About } from './components/about';
+
+
 import './App.css';
 import axios from 'axios';
 
@@ -58,6 +61,7 @@ function App() {
       <Nav isAuth={isAuth} userData={userData} />
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='about' element={<About />} />
         <Route path='login' element={<Login />} />
       </Routes>
       <Footer />
