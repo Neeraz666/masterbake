@@ -2,11 +2,11 @@ import uuid
 from django.db import models
 from users.models import UserAccount
 
-# Create your models here.
+# Models
 class Category(models.Model):
     name = models.CharField(max_length=100)
     image = models.ImageField(upload_to='categories')
-    description = models.CharField(blank=True)
+    description = models.TextField(blank=True)  # Changed to TextField
 
     class Meta:
         verbose_name_plural = "Categories"

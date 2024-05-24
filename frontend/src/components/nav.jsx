@@ -79,7 +79,7 @@ export const Nav = ({ isAuth, userData }) => {
           </div>
           {isAuth ? (
             <div className="user-info">
-              {userData.profilephoto && <img src={userData.profilephoto} alt="User Photo" />}
+              {userData.profilephoto && <img src={userData.profilephoto} alt="User's profile" />}
               {userData.username && <span className="username">{userData.firstname}</span>}
               <button
                 className="dropdown-button"
