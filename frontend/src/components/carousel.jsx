@@ -61,7 +61,7 @@ export const Carousel = () => {
                         data[index] && (
                             <div className="card" key={index}>
                                 <div className="card__image-container">
-                                    <img src={data[index].image} alt={`Image ${index}`} className="card__image" />
+                                    <img src={data[index].image} alt={`Products ${index}`} className="card__image" />
                                 </div>
                                 <div className="card__content">
                                     <h2 className="card__title">{data[index].name}</h2>
