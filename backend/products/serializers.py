@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Category, Product, Image,  Cart, CartItem, Order, OrderItem
+from .models import Category, Product, Image, Cart, CartItem, Order, OrderItem
 from users.serializers import UserSerializer
 
 # Serializer for Category
@@ -8,7 +8,6 @@ class CategorySerializer(serializers.ModelSerializer):
         model = Category
         fields = '__all__'
 
-# Serializers required to show in product
 class CategoryProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
@@ -20,7 +19,7 @@ class ImageSerializer(serializers.ModelSerializer):
         fields = ('image',)
 
 class ProductSerializer(serializers.ModelSerializer):
-    category = CategoryProductSerializer
+    category = CategoryProductSerializer()
     images = ImageSerializer(many=True)
 
     class Meta:

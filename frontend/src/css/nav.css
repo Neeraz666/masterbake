@@ -1,4 +1,4 @@
-.navcss{
+/* Logo container styling */
 .logo-container {
   position: fixed;
   top: 0;
@@ -201,5 +201,4 @@ a.logo-link:hover::after {
   align-items: center;
   padding: 10px;
   transition: background-color 0.3s;
-}
 }
