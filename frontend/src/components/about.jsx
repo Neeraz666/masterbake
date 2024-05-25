@@ -29,7 +29,7 @@ export const About = () => {
       </div>
       <div className="board-of-director">
         <div className="meet-directors-heading">
-          <h2>Meet Our Directors</h2>
+          <h1>Meet Our Directors</h1>
         </div>
         <div className="director-photo">
           <img src={directorPhoto} alt="Board of Directors" />
