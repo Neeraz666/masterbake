@@ -64,6 +64,7 @@ function App() {
         <Route path='about' element={<About />} />
         <Route path='products' element={<Products />} />
         <Route path='products/:categoryName' element={<Products />} />
+        <Route path='products/:categoryName/:id' element={<Products />} />
         <Route path='login' element={<Login />} />
       </Routes>
       <Footer />
