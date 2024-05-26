@@ -5,7 +5,8 @@ import { Home } from './components/home';
 import { Footer } from './components/footer';
 import { Login } from './components/login';
 import { About } from './components/about';
-import { Products } from './components/products';
+import { Category } from './components/category';
+import { Product } from './components/product';
 
 import './App.css';
 import axios from 'axios';
@@ -62,14 +63,14 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='about' element={<About />} />
-        <Route path='products' element={<Products />} />
-        <Route path='products/:categoryName' element={<Products />} />
-        <Route path='products/:categoryName/:id' element={<Products />} />
+        <Route path='products' element={<Category />} />
+        <Route path='products/:categoryName' element={<Category />} />
+        <Route path='products/:categoryName/:productSlug' element={<Product />} />
         <Route path='login' element={<Login />} />
       </Routes>
       <Footer />
     </BrowserRouter>
   );
-}  
+}
 
 export default App;
