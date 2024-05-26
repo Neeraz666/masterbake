@@ -11,10 +11,26 @@ class ListCategory(ListAPIView):
 
 class ListProduct(ListAPIView):
     permission_classes = (permissions.AllowAny,)
+    queryset = Product.objects.all().order_by('id')
+    serializer_class = ProductSerializer
+
+
+class ListSpecificCategory(ListAPIView):
+    permission_classes = (permissions.AllowAny,)
+    serializer_class = ProductSerializer
+    def get_queryset(self):
+        category_slug = self.kwargs.get('slug') 
+        if category_slug:
+            return Product.objects.filter(category__slug=category_slug).order_by('id')
+
+
+class ListSpecificProduct(ListAPIView):
+    permission_classes = (permissions.AllowAny,)
     serializer_class = ProductSerializer
 
     def get_queryset(self):
-        category_name = self.kwargs.get('category')
-        if category_name:
-            return Product.objects.filter(category__name=category_name).order_by('id')
-        return Product.objects.all().order_by('id')
+        category_slug = self.kwargs.get('category_slug')
+        product_slug = self.kwargs.get('product_slug')
+        if product_slug:
+            return Product.objects.filter(category__slug = category_slug, slug=product_slug).order_by('id')
+        return Product.objects.none()
