@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import '../css/about.css'; 
-import cupcakes from '../imgs/cupcakes.jpg';
+import factoryimg from '../imgs/factoryimg.jfif';
+import directorPhoto from '../imgs/directorPhoto.jpg'; // Assuming you have a director photo
 
 export const About = () => {
   useEffect(() => {
@@ -11,9 +12,6 @@ export const About = () => {
   return (
     <div className="about-page">
       <div className="flex-container">
-      <div className="image-section">
-          <img src={cupcakes} alt="Cupcakes" />
-        </div>
         <div className="about-us-container">
           <div className="about-us-text">
             <h1>About Master Bake</h1>
@@ -25,7 +23,31 @@ export const About = () => {
             </p>
           </div>
         </div>
-       
+        <div className="image-section">
+          <img src={factoryimg} alt="Cupcakes" />
+        </div>
+      </div>
+      <div className="board-of-director">
+        <div className="meet-directors-heading">
+          <h1>Meet Our Directors</h1>
+        </div>
+        <div className="director-photo">
+          <img src={directorPhoto} alt="Board of Directors" />
+        </div>
+        <div className="director-details">
+          <h2>Narayan Pantha</h2>
+          <p className="board-of-director-text">Board of Director</p>
+          <p>Narayan Pantha is a visionary leader with years of experience in the baking industry. He has been instrumental in driving Master Bake towards excellence and innovation.</p>
+        </div>
+      </div>
+      <div className="vision-container">
+        <h2>Our Vision</h2>
+        <p>
+          At Master Bake, our vision is to redefine the bakery experience by consistently delivering
+          exceptional quality products while fostering innovation and sustainability in all aspects
+          of our operations.
+        </p>
+        {/* Add more vision statements or related content here */}
       </div>
     </div>
   );

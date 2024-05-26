@@ -36,7 +36,12 @@ footer {
     display: flex;
     flex-direction: column; /* Display links vertically */
     margin-left: 12rem; /* Center the content */
+    
 }
+
+.footer-section ul li a:hover {
+    color: rgb(172, 168, 168);
+}   
 
 .footer-section ul li {
     margin-bottom: 8px;
@@ -48,6 +53,7 @@ footer {
     color: #ffffff; /* Set the text color to white */
     transition: color 0.3s ease;
     position: relative; /* Ensure the line is positioned relative to the link */
+    margin-left: -150px;
 }
 
 .social-icons {
