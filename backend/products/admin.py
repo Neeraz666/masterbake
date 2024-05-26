@@ -7,9 +7,12 @@ class ImageAdmin(admin.TabularInline):
     extra = 1
     can_delete = True
 
+class CategoryAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('name',)}
+
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['category', 'name'] 
-    search_fields = ('name',)
+    prepopulated_fields = {'slug': ('name',)}
+    list_display = ('name', 'category', 'slug', 'quantity')
     inlines = [ImageAdmin]
 
 class CartItemInline(admin.TabularInline):
@@ -45,7 +48,7 @@ class OrderItemAdmin(admin.ModelAdmin):
     list_filter = ('order', 'product')
     search_fields = ('product__name',)
 
-admin.site.register(Category)
+admin.site.register(Category, CategoryAdmin)
 admin.site.register(Image)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Cart, CartAdmin)
