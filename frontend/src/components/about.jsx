@@ -35,8 +35,12 @@ export const About = () => {
       </div>
       <div className="team-paragraph-section">
         <p>
-        Meet the incredible individuals who make Master Bake a success. Our team is comprised of passionate bakers, creative thinkers, and dedicated professionals, all working together to bring you the finest baked goods. With years of experience and a commitment to excellence, we continually. 
+        Meet the incredible individuals who make Master Bake a success. Our team is comprised of passionate bakers, creative thinkers, and dedicated professionals, all working together to bring you the finest baked goods. With years of experience and a commitment to excellence, we continually.
         </p>
+      </div>
+      <div className="join-us-section">
+        <h3>Join Us</h3>
+        <button className="see-more-button">See More</button>
       </div>
     </div>
   );
