@@ -6,6 +6,7 @@ import { Footer } from './components/footer';
 import { Login } from './components/login';
 import { About } from './components/about';
 import { Products } from './components/products';
+import { Form } from './components/form';
 
 import './App.css';
 import axios from 'axios';
@@ -66,6 +67,7 @@ function App() {
         <Route path='products/:categoryName' element={<Products />} />
         <Route path='products/:categoryName/:id' element={<Products />} />
         <Route path='login' element={<Login />} />
+        <Route path='Form' element={<Form />} />
       </Routes>
       <Footer />
     </BrowserRouter>

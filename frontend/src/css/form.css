@@ -1,0 +1,102 @@
+/* Add your CSS styles here */
+body {
+    margin-top: 70px;
+    padding: 0;
+    background-color: black; /* Darker background color */
+    color: #fff; /* Text color */
+}
+
+#contact {
+    width: 100%;
+    padding: 50px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 36px;
+    margin-top: 40px;
+}
+
+.contact-wrapper {
+    max-width: 600px;
+    width: 100%;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-horizontal {
+    width: 48%; /* Adjust width to accommodate space for contact info */
+}
+
+.contact-info {
+    width: 48%; /* Adjust width to accommodate space for form */
+    display: flex;
+    flex-direction: column;
+    margin-top: 110px;
+}
+
+.contact-item {
+    margin-bottom: 20px; /* Add margin-bottom for gap between lines */
+}
+
+.contact-item p {
+    margin: 0; /* Remove default margin of paragraph element */
+    position: relative;
+}
+
+.contact-item p::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px; /* Adjust to control the position of the line */
+    width: 100%;
+    height: 1px;
+    background-color: #fff; /* White line */
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #222; /* Darker form background color */
+    color: #fff; /* Form text color */
+}
+
+.send-button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.send-button:hover {
+    background-color: #0056b3;
+}
+
+.contact-wrapper {
+    max-width: 600px;
+    width: 100%;
+    padding: 20px 20px; /* Adjust padding for top and bottom margins */
+    display: flex;
+    justify-content: space-between;
+    position: relative; /* Position relative for pseudo-elements */
+    border: 2px solid #fff; /* Main border */
+    margin-bottom: 110px;
+}

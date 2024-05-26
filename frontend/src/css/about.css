@@ -5,6 +5,7 @@
   margin-top: 100px;
   background-color: black; /* Adjusted background color */
   padding-bottom: 50px; /* Added padding to create gap below "About Us" */
+  margin-bottom: 90px;
 }
 
 .image-section {
@@ -43,10 +44,42 @@
 }
 
 .about-us-text p {
-  font-size: 0.7rem;
+  font-size: 1rem;
   line-height: 1.6;
   text-align: justify;
   margin-top: -40px;
+}
+
+.slogan-section {
+  text-align: center;
+  margin: 20px 0; /* Add margin to create space above and below */
+  color: white;
+}
+
+.slogan-section h4 {
+  font-size: 1.5rem; /* Adjust font size as needed */
+  margin: 0;
+  opacity: 0; /* Initially invisible */
+  transform: scale(0.5) rotate(-15deg); /* Initial scale and rotation */
+}
+
+.slogan-section h4.animate {
+  animation: uniqueEntrance 2s forwards; /* Apply animation */
+}
+
+@keyframes uniqueEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotate(-15deg);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2) rotate(10deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
 }
 
 .team-image-section {
@@ -81,7 +114,7 @@
 
 .team-paragraph-section p {
   color: white;
-  font-size: 0.8rem;
+  font-size: 1rem;
   line-height: 1.6;
   text-align: justify;
   word-wrap: break-word; /* Allow long words to break and wrap */
@@ -89,25 +122,26 @@
 
 .join-us-section {
   text-align: center;
-  margin-top: 30px;
+  margin-top: 150px;
+  margin-bottom: 60px;
 }
 
 .join-us-section h3 {
   color: white;
   font-size: 1.5rem;
-  margin-top: 60px;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
 }
 
 .see-more-button {
   background-color: black;
   color: white;
   border: 2px solid white;
-  padding: 5px 40px;
+  padding: 5px 40px; /* Increased padding to make the button larger */
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
   border-radius: 5px; /* Slightly curved border */
+  margin-bottom: 100px;
 }
 
 .see-more-button:hover {
