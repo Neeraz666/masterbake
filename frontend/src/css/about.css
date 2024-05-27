@@ -3,23 +3,39 @@
   flex-direction: column;
   min-height: 85vh;
   margin-top: 100px;
+  background-color: black; /* Adjusted background color */
+  padding-bottom: 50px; /* Added padding to create gap below "About Us" */
 }
 
-.flex-container {
-  display: flex;
-  flex: 1;
+.image-section {
+  height: 70vh; /* Adjust the height as needed */
+  overflow: hidden;
+}
+
+.image-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Add border radius if needed */
 }
 
 .about-us-container {
-  flex: 1;
-  padding: 0 20px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between; /* Arrange items with space between them */
   align-items: center;
+  padding: 50px 20px;
+  background-color: black;
+  color: white;
+}
+
+.about-us-heading {
+  width: 40%; /* Adjust width for heading */
+  margin-top: -41px;
+
 }
 
 .about-us-text {
-  text-align: center;
+  width: 55%; /* Adjust width for text */
 }
 
 .about-us-text h1 {
@@ -28,90 +44,46 @@
 }
 
 .about-us-text p {
-  font-size: 1.1rem;
+  font-size: 0.7rem;
   line-height: 1.6;
   text-align: justify;
-  margin: 0 15%;
+  margin-top: -40px;
 }
 
-.image-section {
-  flex: 1;
-  height: 86vh; /* Set image section height to 100% of viewport height */
-}
-
-.image-section img {
-  width: 100%;
-  height: 100%; /* Make image fill its container */
-  object-fit: cover;
-  border-radius: 10px; /* Add border radius */
-}
-
-.meet-directors-heading {
-  text-align: center;
-  margin-bottom: 50px; /* Adjust margin as needed */
-}
-
-.board-of-director {
+.team-image-section {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 100px auto; /* Center horizontally */
-  max-width: 800px; /* Added maximum width */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  margin: 50px 40px; /* Add margin to the team image section for more space from left and right */
 }
 
-.director-photo {
-  flex: 1;
-  margin-bottom: 20px;
+.team-image-section img {
+  max-width: calc(100% - 200px); /* Adjusted width to account for increased left and right margins */
+  max-height: 100vh; /* Limit image height to its container */
+  object-fit: cover; /* Image will cover the entire container */
 }
 
-.director-photo img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px; /* Add border radius */
-}
-
-.director-details {
-  flex: 1;
-  padding-left: 20px;
+.team-heading-section {
   text-align: center;
 }
 
-.director-details h2 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-  color: #333; /* Change color to black */
+.team-heading-section h3 {
+  color: white;
+  font-size: 2rem; /* Adjust font size as needed */
+  margin-bottom: 30px;
 }
 
-.director-details p {
-  font-size: 1rem;
-  color: black; /* Change color to black */
-}
-
-.board-of-director-text {
-  color: red !important; /* Change color as desired */
-}
-
-
-.vision-container {
-  padding: 50px;
+.team-paragraph-section {
   text-align: center;
-  background-color: #f8f8f8;
-  margin-top: auto; /* Decreased the margin */
-  margin-bottom: 50px;
-  border-radius: 20px;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+  padding: 0 20px; /* Add padding to the paragraph section */
+  max-width: 80%; /* Set maximum width for the paragraph section */
+  margin: 0 auto; /* Center the paragraph section horizontally */
 }
 
-.vision-container h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-}
-
-.vision-container p {
-  font-size: 1.1rem;
+.team-paragraph-section p {
+  color: white;
+  font-size: 0.8rem;
   line-height: 1.6;
   text-align: justify;
+  word-wrap: break-word; /* Allow long words to break and wrap */
 }
