@@ -1,29 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import axios from 'axios';
+import '../css/product.css';
 
 export const Product = () => {
-  const { productSlug } = useParams();
+  const { categoryName, productSlug } = useParams();
   const location = useLocation();
   const { selectedCategory } = location.state || {};
+  const category = selectedCategory || categoryName;
   const [product, setProduct] = useState(null);
   const [activeImage, setActiveImage] = useState('');
 
   useEffect(() => {
-    if (!selectedCategory) return;
+    if (category && productSlug) {
+      const fetchProductData = async () => {
+        try {
+          const response = await axios.get(`http://localhost:8000/api/product/${category}/${productSlug}/`);
+          setProduct(response.data);
+          setActiveImage(response.data.images[0]?.image || '');
+        } catch (error) {
+          console.error('Error fetching product data: ', error);
+        }
+      };
 
-    const fetchProductData = async () => {
-      try {
-        const response = await axios.get(`http://localhost:8000/api/product/${selectedCategory}/${productSlug}/`);
-        setProduct(response.data);
-        setActiveImage(response.data.images[0]?.image || '');
-      } catch (error) {
-        console.error('Error fetching product data: ', error);
-      }
-    };
-
-    fetchProductData();
-  }, [productSlug, selectedCategory]);
+      fetchProductData();
+    }
+  }, [productSlug, category]);
 
   if (!product) {
     return <div>Loading...</div>;
