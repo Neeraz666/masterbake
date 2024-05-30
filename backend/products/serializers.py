@@ -2,7 +2,6 @@ from rest_framework import serializers
 from .models import Category, Product, Image, Cart, CartItem, Order, OrderItem
 from users.serializers import UserSerializer
 
-# Serializer for Category
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
@@ -24,7 +23,7 @@ class ProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Product
-        fields = ('id', 'category', 'name', 'description', 'quantity', 'slug','images')
+        fields = ('id', 'category', 'name', 'description', 'price', 'slug','images')
 
 
 class CartItemSerializer(serializers.ModelSerializer):
@@ -58,4 +57,4 @@ class OrderSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Order
-        fields = ('id', 'user', 'order_items', 'created_at', 'updated_at', 'status', 'total_amount')
+        fields = ('id', 'user', 'order_items', 'created_at', 'updated_at', 'status', 'total_amount', 'order_number')

@@ -9,7 +9,6 @@ class Category(models.Model):
     image = models.ImageField(upload_to='categories')
     description = models.TextField(blank=True)  # Changed to TextField
     slug = models.SlugField(max_length = 100, blank=True)
-    price = models.DecimalField(max_digits=10, decimal_places=2)  # Add price field
 
     class Meta:
         verbose_name_plural = "Categories"
@@ -27,7 +26,7 @@ class Product(models.Model):
     category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     description = models.TextField()
-    quantity = models.PositiveIntegerField()
+    price = models.PositiveIntegerField()
     slug = models.SlugField(max_length=100, blank=True)
 
     def __str__(self):
@@ -72,12 +71,21 @@ class CartItem(models.Model):
         # Calculate the total price for this cart item
         return self.product.price * self.quantity
 
-# Order model
 class Order(models.Model):
+    PENDING = 'Pending'
+    COMPLETE = 'Complete'
+    
+    STATUS_CHOICES = [
+        (PENDING, 'Pending'),
+        (COMPLETE, 'Complete'),
+    ]
+    
     user = models.ForeignKey(UserAccount, on_delete=models.CASCADE, related_name='orders')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     total_price = models.DecimalField(max_digits=10, decimal_places=2)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default=PENDING)
+    order_number = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
 
     def __str__(self):
         return f"Order({self.user}, {self.created_at})"
@@ -97,5 +105,4 @@ class OrderItem(models.Model):
         return f"{self.product.name} in order of {self.order.user.username}"
 
     def get_total_price(self):
-        # Calculate the total price for this order item
         return self.price * self.quantity
