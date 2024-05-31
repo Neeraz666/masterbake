@@ -31,6 +31,8 @@ urlpatterns = [
     path('api/users/', include('users.urls')),
 
     path('api/product/', include('products.urls')),
+    
+    path('api/cart/', include('cart.urls')),
 
     path('api/logout/', LogoutView.as_view(), name='Logout'),
 
