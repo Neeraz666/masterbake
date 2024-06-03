@@ -5,15 +5,14 @@ import '../css/category.css';
 
 export const Category = () => {
   const { categoryName } = useParams();
-  const [selectedCategory, setSelectedCategory] = useState(categoryName || null);
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProductData = async () => {
       try {
-        const url = selectedCategory 
-          ? `http://localhost:8000/api/product/${selectedCategory}/`
+        const url = categoryName 
+          ? `http://localhost:8000/api/product/${categoryName}/`
           : 'http://localhost:8000/api/product/';
         const response = await axios.get(url);
         setProducts(response.data.results);
@@ -23,15 +22,14 @@ export const Category = () => {
     };
 
     fetchProductData();
-  }, [selectedCategory]);
+  }, [categoryName]);
 
   const handleCategoryClick = (category) => {
-    setSelectedCategory(category);
-    navigate(`/products/${category}`, { state: { selectedCategory: category } });
+    navigate(`/products/${category}`);
   };
 
   const handleProductClick = (productSlug) => {
-    navigate(`/products/${selectedCategory}/${productSlug}`, { state: { selectedCategory } });
+    navigate(`/products/${categoryName}/${productSlug}`);
   };
 
   const categories = Array.from(new Set(products.map(product => product.category.name)));
@@ -50,19 +48,17 @@ export const Category = () => {
       </div>
 
       <div className="products-list">
-        <h2>Products</h2>
-        {selectedCategory && (
-          <ul>
-            {products.map(product => (
-              <li key={product.id} onClick={() => handleProductClick(product.slug)}>
-                <h3>{product.name}</h3>
-                <p>{product.description}</p>
-                <p>Quantity: {product.quantity}</p>
-                <img src={product.images[0]?.image} alt={product.name} />
-              </li>
-            ))}
-          </ul>
-        )}
+        <h2>{categoryName ? `${categoryName} Products` : 'Products'}</h2>
+        <ul>
+          {products.map(product => (
+            <li key={product.id} onClick={() => handleProductClick(product.slug)}>
+              <h3>{product.name}</h3>
+              <p>{product.description}</p>
+              <p>Quantity: {product.quantity}</p>
+              <img src={product.images[0]?.image} alt={product.name} />
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );
