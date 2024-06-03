@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'; // Import the Link component
+import { Link } from 'react-router-dom';
 import masterbakelogo from '../imgs/masterbakelogo.png';
 import axios from 'axios';
 import '../css/nav.css';
 
 export const Nav = ({ isAuth, userData }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [catdata, setCatData] = useState([]);
 
   useEffect(() => {
     console.log('Nav Component userData:', userData);
@@ -14,6 +15,18 @@ export const Nav = ({ isAuth, userData }) => {
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:8000/api/product/category');
+        setCatData(response.data.results);
+      } catch (error) {
+        console.error('Error fetching data: ', error);
+      }
+    };
+    fetchData();
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -40,7 +53,7 @@ export const Nav = ({ isAuth, userData }) => {
       await axios.post('http://localhost:8000/api/logout/', {
         refresh_token: refreshToken
       }, {
-        headers: { 
+        headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${accessToken}`
         },
@@ -64,17 +77,26 @@ export const Nav = ({ isAuth, userData }) => {
   return (
     <div className='navcss'>
       <div className='logo-container'>
-        <a href="/" className="logo-link">
+        <Link to="/" className="logo-link">
           <img src={masterbakelogo} alt="MasterBake original logo" className="logo" />
-        </a>
+        </Link>
       </div>
       <nav>
         <div className="navbar">
           <div className="navbar-container">
             <ul>
               <li><Link to="/">HOME</Link></li>
-              <li><Link to="/about">ABOUT US</Link></li> {/* Use Link component for navigation */}
-              <li><a href="/">OUR PRODUCTS</a></li>
+              <li><Link to="/about">ABOUT US</Link></li>
+              <li className="products-dropdown">
+                <Link to="#">OUR PRODUCTS</Link>
+                <ul className="dropdown-menu">
+                  {catdata.map((category) => (
+                    <li key={category.id}>
+                      <Link to={`/products/${category.slug}`}>{category.name}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </li>
             </ul>
           </div>
           {isAuth ? (
@@ -97,13 +119,13 @@ export const Nav = ({ isAuth, userData }) => {
             </div>
           ) : (
             <div className="login-container">
-              <Link to="/login" className="login-button"> {/* Use Link component for login */}
+              <Link to="/login" className="login-button">
                 Login
               </Link>
             </div>
           )}
         </div>
       </nav>
-      </div>
+    </div>
   );
 };
