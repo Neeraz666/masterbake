@@ -12,9 +12,8 @@ class CartView(RetrieveUpdateAPIView):
     serializer_class = CartSerializer
 
     def get_object(self):
-        cart, created = Cart.objects.get_or_create(user=self.request.user)
-        return cart
-
+        return get_object_or_404(Cart, user=self.request.user)
+    
 class AddToCartView(APIView):
     permission_classes = (permissions.IsAuthenticated,)
 
@@ -26,8 +25,11 @@ class AddToCartView(APIView):
         cart_item, created = CartItem.objects.get_or_create(cart=cart, product=product)
         if not created:
             cart_item.quantity += int(quantity)
+        else:
+            cart_item.quantity = int(quantity)
         cart_item.save()
-        return Response({"message": "Added To cart successfully."}, status=status.HTTP_201_CREATED)
+        return Response({"message": "Added to cart successfully."}, status=status.HTTP_201_CREATED)
+
 
 class CheckoutView(APIView):
     permission_classes = (permissions.IsAuthenticated,)

@@ -10,6 +10,7 @@ export const Product = () => {
   const category = selectedCategory || categoryName;
   const [product, setProduct] = useState(null);
   const [activeImage, setActiveImage] = useState('');
+  const [quantity, setQuantity] = useState(1); // Initialize quantity state
 
   useEffect(() => {
     if (category && productSlug) {
@@ -26,6 +27,45 @@ export const Product = () => {
       fetchProductData();
     }
   }, [productSlug, category]);
+
+const handleAddToCart = async () => {
+  const accessToken = localStorage.getItem('access_token');
+  console.log('Product Slug:', product.slug);
+  console.log('Quantity:', quantity);
+  console.log('Access Token:', accessToken);
+
+  if (!accessToken) {
+    alert('You need to be logged in to add products to the cart.');
+    return;
+  }
+
+  try {
+    const response = await axios.post(
+      'http://localhost:8000/api/cart/add/',
+      {
+        product_slug: product.slug, // Use product slug instead of product ID
+        quantity: quantity,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
+    alert('Product added to cart successfully!');
+  } catch (error) {
+    console.error('Error adding product to cart: ', error);
+    alert('Error adding product to cart');
+  }
+};
+
+  const incrementQuantity = () => {
+    setQuantity((prevQuantity) => prevQuantity + 1);
+  };
+
+  const decrementQuantity = () => {
+    setQuantity((prevQuantity) => (prevQuantity > 1 ? prevQuantity - 1 : 1));
+  };
 
   if (!product) {
     return <div>Loading...</div>;
@@ -53,8 +93,13 @@ export const Product = () => {
         <h1>{product.name}</h1>
         <p>{product.description}</p>
         <p>Quantity: {product.quantity}</p>
+        <div className="quantity-control">
+          <button onClick={decrementQuantity}>-</button>
+          <input type="number" value={quantity} readOnly />
+          <button onClick={incrementQuantity}>+</button>
+        </div>
+        <button onClick={handleAddToCart}>Add to Cart</button>
         <button>Add to Wishlist</button>
-        <button>Add to Cart</button>
       </div>
     </div>
   );
