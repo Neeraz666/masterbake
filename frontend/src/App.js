@@ -7,6 +7,7 @@ import { Login } from './components/login';
 import { About } from './components/about';
 import { Category } from './components/category';
 import { Product } from './components/product';
+import Cart from './components/cart'; 
 
 import './App.css';
 import axios from 'axios';
@@ -67,6 +68,7 @@ function App() {
         <Route path='products/:categoryName' element={<Category />} />
         <Route path='products/:categoryName/:productSlug' element={<Product />} />
         <Route path='login' element={<Login />} />
+        <Route path="cart" element={<Cart />} />  
       </Routes>
       <Footer />
     </BrowserRouter>

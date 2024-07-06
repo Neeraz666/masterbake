@@ -3,19 +3,24 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 160px; /* Adjust width as needed */
-  height: 145px; /* Adjust height as needed */
+  width: 160px;
+  /* Adjust width as needed */
+  height: 145px;
+  /* Adjust height as needed */
   background-color: #fffdfd;
-  border-bottom-right-radius: 75px; /* Creates the semicircle effect */
+  border-bottom-right-radius: 75px;
+  /* Creates the semicircle effect */
   display: flex;
   justify-content: center;
   align-items: center;
   transition: all 0.3s ease;
-  z-index: 1001; /* Above the navbar */
+  z-index: 1001;
+  /* Above the navbar */
 }
 
 .logo {
-  height: 250px; /* Adjust the logo size */
+  height: 250px;
+  /* Adjust the logo size */
   transition: all 0.3s ease;
 }
 
@@ -50,7 +55,8 @@ ul {
 
 li {
   margin-right: 20px;
-  position: relative; /* Necessary for the dropdown menu */
+  position: relative;
+  /* Necessary for the dropdown menu */
 }
 
 a {
@@ -144,6 +150,7 @@ a.logo-link:hover::after {
   0% {
     transform: scale(1);
   }
+
   100% {
     transform: scale(1.05);
   }
@@ -235,4 +242,10 @@ a.logo-link:hover::after {
   align-items: center;
   padding: 10px;
   transition: background-color 0.3s;
+}
+
+.shopping-bag img {
+  margin-left: 10px;
+  width: 30px;
+  height: 30px;
 }

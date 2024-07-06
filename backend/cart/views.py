@@ -30,6 +30,36 @@ class AddToCartView(APIView):
         cart_item.save()
         return Response({"message": "Added to cart successfully."}, status=status.HTTP_201_CREATED)
 
+class IncrementCartItemQuantityView(APIView):
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def post(self, request, *args, **kwargs):
+        item_id = kwargs.get('item_id')
+        cart_item = get_object_or_404(CartItem, id=item_id, cart__user=request.user)
+        cart_item.quantity += 1
+        cart_item.save()
+        return Response({"message": "Cart item quantity incremented."}, status=status.HTTP_200_OK)
+
+class DecrementCartItemQuantityView(APIView):
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def post(self, request, *args, **kwargs):
+        item_id = kwargs.get('item_id')
+        cart_item = get_object_or_404(CartItem, id=item_id, cart__user=request.user)
+        if cart_item.quantity > 1:
+            cart_item.quantity -= 1
+            cart_item.save()
+            return Response({"message": "Cart item quantity decremented."}, status=status.HTTP_200_OK)
+        return Response({"message": "Quantity cannot be less than 1."}, status=status.HTTP_400_BAD_REQUEST)
+
+class RemoveCartItemView(APIView):
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def delete(self, request, *args, **kwargs):
+        item_id = kwargs.get('item_id')
+        cart_item = get_object_or_404(CartItem, id=item_id, cart__user=request.user)
+        cart_item.delete()
+        return Response({"message": "Cart item removed."}, status=status.HTTP_204_NO_CONTENT)
 
 class CheckoutView(APIView):
     permission_classes = (permissions.IsAuthenticated,)
@@ -54,8 +84,6 @@ class CheckoutView(APIView):
         order.save()  
         cart.items.all().delete()  
         return Response({"message": "Checkout successful. Order created."}, status=status.HTTP_201_CREATED)
-
-
 
 class OrderHistoryView(ListAPIView):
     permission_classes = (permissions.IsAuthenticated,)
