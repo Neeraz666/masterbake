@@ -34,6 +34,11 @@ const Cart = () => {
     fetchCartItems();
   }, []);
 
+  const updateTotalPrice = (items) => {
+    const newTotalPrice = items.reduce((acc, item) => acc + item.product.price * item.quantity, 0);
+    setTotalPrice(newTotalPrice);
+  };
+
   const incrementQuantity = async (itemId) => {
     try {
       const accessToken = localStorage.getItem('access_token');
@@ -47,11 +52,13 @@ const Cart = () => {
         },
       });
 
-      setCartItems((prevItems) =>
-        prevItems.map((item) =>
+      setCartItems((prevItems) => {
+        const updatedItems = prevItems.map((item) =>
           item.id === itemId ? { ...item, quantity: item.quantity + 1 } : item
-        )
-      );
+        );
+        updateTotalPrice(updatedItems);
+        return updatedItems;
+      });
     } catch (error) {
       console.error('Error incrementing quantity:', error);
     }
@@ -70,13 +77,15 @@ const Cart = () => {
         },
       });
 
-      setCartItems((prevItems) =>
-        prevItems.map((item) =>
+      setCartItems((prevItems) => {
+        const updatedItems = prevItems.map((item) =>
           item.id === itemId && item.quantity > 1
             ? { ...item, quantity: item.quantity - 1 }
             : item
-        )
-      );
+        );
+        updateTotalPrice(updatedItems);
+        return updatedItems;
+      });
     } catch (error) {
       console.error('Error decrementing quantity:', error);
     }
@@ -95,7 +104,11 @@ const Cart = () => {
         },
       });
 
-      setCartItems((prevItems) => prevItems.filter((item) => item.id !== itemId));
+      setCartItems((prevItems) => {
+        const updatedItems = prevItems.filter((item) => item.id !== itemId);
+        updateTotalPrice(updatedItems);
+        return updatedItems;
+      });
     } catch (error) {
       console.error('Error removing item:', error);
     }

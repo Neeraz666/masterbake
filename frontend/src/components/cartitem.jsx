@@ -3,6 +3,8 @@ import '../css/cartitem.css';
 import remove from '../imgs/remove.svg';
 
 const CartItem = ({ item, incrementQuantity, decrementQuantity, removeItem }) => {
+  const total_price = item.product.price * item.quantity;
+
   return (
     <div className="cart-item">
       <div className="product-info">
@@ -22,7 +24,7 @@ const CartItem = ({ item, incrementQuantity, decrementQuantity, removeItem }) =>
       </div>
 
       <div className="total-price">
-        <span>{item.total_price}</span>
+        <span>Rs. {total_price}</span>
       </div>
     </div>
   );
