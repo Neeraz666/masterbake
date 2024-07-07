@@ -5,7 +5,8 @@ import '../css/cart.css';
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
-  const [loading, setLoading] = useState(true); // Added loading state
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
     const fetchCartItems = async () => {
@@ -22,6 +23,7 @@ const Cart = () => {
         });
 
         setCartItems(response.data.items);
+        setTotalPrice(response.data.total_price);
         setLoading(false); 
       } catch (error) {
         console.error('Error fetching cart items:', error);
@@ -119,6 +121,9 @@ const Cart = () => {
           removeItem={removeItem}
         />
       ))}
+      <p className='estimated-total'>Estimated Total: Rs.{totalPrice}</p>
+      <p>Taxes, discounts and shipping calculated at checkout.</p>
+      <button>Proceed to Checkout</button>
     </div>
   );
 };
