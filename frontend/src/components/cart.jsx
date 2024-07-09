@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import CartItem from './cartitem';
 import '../css/cart.css';
@@ -6,7 +7,7 @@ import '../css/cart.css';
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
-  const [loading, setLoading] = useState(true); 
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchCartItems = async () => {
@@ -24,10 +25,10 @@ const Cart = () => {
 
         setCartItems(response.data.items);
         setTotalPrice(response.data.total_price);
-        setLoading(false); 
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching cart items:', error);
-        setLoading(false); 
+        setLoading(false);
       }
     };
 
@@ -115,7 +116,7 @@ const Cart = () => {
   };
 
   if (loading) {
-    return <div className="cart">Loading...</div>; 
+    return <div className="cart">Loading...</div>;
   }
 
   return (
@@ -136,7 +137,9 @@ const Cart = () => {
       ))}
       <p className='estimated-total'>Estimated Total: Rs.{totalPrice}</p>
       <p>Taxes, discounts and shipping calculated at checkout.</p>
-      <button>Proceed to Checkout</button>
+      <button><Link to="/checkout">
+        Proceed to Checkout
+      </Link></button>
     </div>
   );
 };

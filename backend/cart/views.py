@@ -65,9 +65,16 @@ class CheckoutView(APIView):
     permission_classes = (permissions.IsAuthenticated,)
 
     def post(self, request, *args, **kwargs):
-        cart = get_object_or_404(Cart, user=request.user)
-        order = Order(user=request.user)
-        order.save()  
+        user = request.user
+        phone_number = request.data.get('phone_number')
+        address = request.data.get('address')
+        user.phone_number = phone_number
+        user.address = address
+        user.save()
+
+        cart = get_object_or_404(Cart, user=user)
+        order = Order(user=user)
+        order.save()
 
         total_price = 0
         for item in cart.items.all():
@@ -80,10 +87,17 @@ class CheckoutView(APIView):
             order_item.save()
             total_price += order_item.get_total_price()
 
+        total_price += 50  
         order.total_price = total_price
-        order.save()  
-        cart.items.all().delete()  
-        return Response({"message": "Checkout successful. Order created."}, status=status.HTTP_201_CREATED)
+        order.save()
+        cart.items.all().delete()
+
+        return Response({
+            "message": "Checkout successful. Order created.",
+            "total_price": total_price,
+            "order_number": order.order_number
+        }, status=status.HTTP_201_CREATED)
+
 
 class OrderHistoryView(ListAPIView):
     permission_classes = (permissions.IsAuthenticated,)
