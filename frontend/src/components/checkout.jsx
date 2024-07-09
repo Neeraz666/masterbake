@@ -10,7 +10,7 @@ const Checkout = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchCartTotal = async () => {
+    const fetchCartData = async () => {
       const accessToken = localStorage.getItem('access_token');
       if (!accessToken) {
         console.error('Access token is missing');
@@ -23,13 +23,16 @@ const Checkout = () => {
             Authorization: `Bearer ${accessToken}`,
           },
         });
-        setCartTotal(response.data.total_price);
+        const { phone_number, address, total_price } = response.data;
+        setCartTotal(total_price);
+        setPhoneNumber(phone_number || '');
+        setAddress(address || '');
       } catch (error) {
-        console.error('Error fetching cart total:', error);
+        console.error('Error fetching cart data:', error);
       }
     };
 
-    fetchCartTotal();
+    fetchCartData();
   }, []);
 
   const handleCheckout = async () => {
@@ -65,7 +68,7 @@ const Checkout = () => {
           />
         </div>
         <div>
-          <label>Address</label>
+          <label>Shipping Address</label>
           <textarea
             value={address}
             onChange={(e) => setAddress(e.target.value)}
