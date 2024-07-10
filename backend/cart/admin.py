@@ -20,9 +20,19 @@ class OrderItemInline(admin.TabularInline):
     extra = 1
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('user', 'created_at', 'updated_at', 'total_price', 'status', 'order_number')
+    list_display = ('user', 'get_phone_number', 'get_address', 'created_at','updated_at', 'total_price', 'status', 'order_number')
+    readonly_fields = ('order_number','get_phone_number', 'get_address','created_at', 'updated_at',)
+    list_filter = ('status',) 
     search_fields = ('user__email',)
     inlines = [OrderItemInline]
+
+    def get_phone_number(self, obj):
+        return obj.user.phone_number
+    get_phone_number.short_description = 'Phone Number'
+
+    def get_address(self, obj):
+        return obj.user.address
+    get_address.short_description = 'Address'
 
 class OrderItemAdmin(admin.ModelAdmin):
     list_display = ('order', 'product', 'quantity', 'price', 'get_total_price')
