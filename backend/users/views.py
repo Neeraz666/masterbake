@@ -1,11 +1,12 @@
 from rest_framework import permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView, RetrieveUpdateAPIView
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
 from django.contrib.auth import get_user_model
 from .serializers import UserSerializer
+from .permissions import IsOwner
 
 
 User = get_user_model()
@@ -55,3 +56,11 @@ class UserDetail(ListAPIView):
     def get_queryset(self):
         # Filter queryset to return data of the authenticated user only
         return User.objects.filter(pk=self.request.user.pk)
+    
+class UserProfileDetailView(RetrieveUpdateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [permissions.IsAuthenticated, IsOwner]
+
+    def get_object(self):
+        return self.request.user
