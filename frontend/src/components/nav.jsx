@@ -5,8 +5,6 @@ import axios from 'axios';
 import '../css/nav.css';
 import shoppingBag from '../imgs/shoppingBag.svg';
 
-
-
 export const Nav = ({ isAuth, userData }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [catdata, setCatData] = useState([]);
@@ -116,6 +114,7 @@ export const Nav = ({ isAuth, userData }) => {
               </button>
               {dropdownOpen && (
                 <div className="dropdown" id="dropdownMenu">
+                  <button><Link to="/profile">Profile</Link> </button>
                   <button onClick={logout}>Logout</button>
                 </div>
               )}
