@@ -4,7 +4,7 @@ import masterbakelogo from '../imgs/masterbakelogo.png';
 import axios from 'axios';
 import '../css/nav.css';
 import shoppingBag from '../imgs/shoppingBag.svg';
-import search from '../imgs/search.png';
+import SearchBar from './search';
 
 export const Nav = ({ isAuth, userData }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -102,12 +102,7 @@ export const Nav = ({ isAuth, userData }) => {
             </ul>
           </div>
 
-          <div className="search-container">
-            <button className="search-button"><img src={search} alt="Search Box" /></button>
-            <div className="searchbox">
-              <input type="text" placeholder="Search..." />
-            </div>
-          </div>  
+          <SearchBar /> 
 
           <div className='shopping-bag'>
             <Link to="/cart" className="logo-link">
