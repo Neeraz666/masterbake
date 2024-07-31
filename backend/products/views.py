@@ -1,6 +1,7 @@
 from rest_framework.response import Response
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 from .models import Category, Product
+from django.db.models import Q
 from rest_framework import permissions
 from .serializers import CategorySerializer, ProductSerializer
 
@@ -35,3 +36,17 @@ class ListSpecificProduct(RetrieveAPIView):
         if category_slug and product_slug:
             return Product.objects.get(category__slug=category_slug, slug=product_slug)
         return None
+    
+class SearchProduct(ListAPIView):
+    permission_classes = (permissions.AllowAny,)
+    serializer_class = ProductSerializer
+
+    def get_queryset(self):
+        print("get_queryset called")  # Direct debug statement
+        query = self.request.query_params.get('q', None)
+        print(f"Received query: {query}")  # Debug statement
+        if query:
+            queryset = Product.objects.filter(Q(name__icontains=query) | Q(slug__icontains=query)).order_by('id')
+            print(f"Generated queryset: {queryset}")  # Debug statement
+            return queryset
+        return Product.objects.none()

@@ -4,6 +4,7 @@ import masterbakelogo from '../imgs/masterbakelogo.png';
 import axios from 'axios';
 import '../css/nav.css';
 import shoppingBag from '../imgs/shoppingBag.svg';
+import SearchBar from './search';
 
 export const Nav = ({ isAuth, userData }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -100,6 +101,15 @@ export const Nav = ({ isAuth, userData }) => {
               </li>
             </ul>
           </div>
+
+          <SearchBar /> 
+
+          <div className='shopping-bag'>
+            <Link to="/cart" className="logo-link">
+              <img src={shoppingBag} alt="Shopping Bag" />
+            </Link>
+          </div>
+
           {isAuth ? (
             <div className="user-info">
               {userData.profilephoto && <img src={userData.profilephoto} alt="User's profile" />}
@@ -126,12 +136,6 @@ export const Nav = ({ isAuth, userData }) => {
               </Link>
             </div>
           )}
-
-          <div className='shopping-bag'>
-            <Link to="/cart" className="logo-link">
-              <img src={shoppingBag} alt="Shopping Bag" />
-            </Link>
-          </div>
         </div>
       </nav>
     </div>

@@ -23,20 +23,20 @@ export const Carousel = () => {
 
     useEffect(() => {
         const intervalId = setInterval(() => {
-            setCurrentIndex((prevIndex) => (prevIndex + cardsToShow) % totalImages);
+            setCurrentIndex((prevIndex) => (prevIndex + 1) % totalImages);
         }, 4000);
 
         return () => {
             clearInterval(intervalId);
         };
-    }, [totalImages, cardsToShow]);
+    }, [totalImages]);
 
     const goToPrevSlide = () => {
-        setCurrentIndex((prevIndex) => (prevIndex - cardsToShow + totalImages) % totalImages);
+        setCurrentIndex((prevIndex) => (prevIndex - 1 + totalImages) % totalImages);
     };
 
     const goToNextSlide = () => {
-        setCurrentIndex((prevIndex) => (prevIndex + cardsToShow) % totalImages);
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % totalImages);
     };
 
     const getDisplayedImages = () => {
@@ -57,11 +57,14 @@ export const Carousel = () => {
             <div className="carousel">
                 <button className="prev" onClick={goToPrevSlide}></button>
                 <div className="cards-container">
-                    {getDisplayedImages().map(index => (
+                    {getDisplayedImages().map((index, i) => (
                         data[index] && (
-                            <div className="card" key={index}>
+                            <div 
+                                className={`card ${i === 0 ? 'card--active' : ''}`} 
+                                key={index}
+                            >
                                 <div className="card__image-container">
-                                    <img src={data[index].image} alt={`Products ${index}`} className="card__image" />
+                                    <img src={data[index].image} alt={`Product ${index}`} className="card__image" />
                                 </div>
                                 <div className="card__content">
                                     <h2 className="card__title">{data[index].name}</h2>

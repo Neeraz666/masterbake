@@ -144,6 +144,7 @@ a.logo-link:hover::after {
   position: relative;
   overflow: hidden;
   animation: pulse 2s infinite alternate;
+  filter: drop-shadow(1px 1px 10px rgb(235, 188, 105));
 }
 
 @keyframes pulse {
@@ -245,7 +246,7 @@ a.logo-link:hover::after {
 }
 
 .shopping-bag img {
-  margin-left: 10px;
+  margin-right: 20px;
   width: 30px;
   height: 30px;
 }
