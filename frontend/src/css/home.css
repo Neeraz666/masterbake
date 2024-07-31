@@ -1,15 +1,15 @@
 .gallery {
-  position: relative;
+  position: static;
   max-width: 100%;
   margin: auto;
   overflow: hidden;
-  height: 810px; /* Adjust height as needed */
-  margin-bottom: 60px;
+  height: 80vh; /* Adjust height as needed */
+  margin-bottom: 90px;
 }
 
 .gallery img {
   width: 100%;
-  height: 110%;
+  height: 85%;
   object-fit: cover;
   position: absolute;
   top: 0;
@@ -24,7 +24,7 @@
 
 .pagination {
   position: absolute;
-  bottom: 10px; /* Adjust as needed */
+  bottom: 170px;
   width: 100%;
   text-align: center;
 }
