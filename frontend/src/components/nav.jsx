@@ -124,6 +124,7 @@ export const Nav = ({ isAuth, userData }) => {
               </button>
               {dropdownOpen && (
                 <div className="dropdown" id="dropdownMenu">
+                  <button><Link to="/profile">Profile</Link> </button>
                   <button onClick={logout}>Logout</button>
                 </div>
               )}

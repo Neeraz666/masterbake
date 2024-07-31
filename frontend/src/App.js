@@ -7,6 +7,7 @@ import { Login } from './components/login';
 import { About } from './components/about';
 import { Category } from './components/category';
 import { Product } from './components/product';
+import  Profile  from './components/profile';
 import Cart from './components/cart'; 
 import Order from './components/order';
 import Checkout from './components/checkout';
@@ -73,6 +74,7 @@ function App() {
         <Route path="cart" element={<Cart />} />  
         <Route path="checkout" element={<Checkout />} />
         <Route path="order" element={<Order />} />
+        <Route path='profile' element={<Profile />} />
       </Routes>
       <Footer />
     </BrowserRouter>
