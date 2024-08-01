@@ -16,6 +16,8 @@ export const Resetpass = () => {
                 setStep('reset');
             })
             .catch(error => {
+                const errormsg = error.response?.data?.error
+                alert(errormsg)
                 console.error('There was an error!', error);
             });
     };
