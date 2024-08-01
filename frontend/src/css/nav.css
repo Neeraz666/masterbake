@@ -48,7 +48,7 @@
 
 ul {
   list-style-type: none;
-  margin-right: -160px;
+  margin-left: 50vh;
   padding: 0;
   display: flex;
 }

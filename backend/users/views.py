@@ -1,3 +1,4 @@
+import datetime
 from rest_framework import permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -7,6 +8,10 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth import get_user_model
 from .serializers import UserSerializer
 from .permissions import IsOwner
+import random
+from rest_framework import status
+from django.core.mail import send_mail
+from django.utils import timezone
 
 
 User = get_user_model()
@@ -64,3 +69,60 @@ class UserProfileDetailView(RetrieveUpdateAPIView):
 
     def get_object(self):
         return self.request.user
+    
+class PasswordResetRequestView(APIView):
+
+    permission_classes = (permissions.AllowAny, )
+
+    def post(self, request):
+        data = self.request.data
+
+        email = data['email']
+
+        if not email:
+            return Response({'error': 'Email is required'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        user = User.objects.filter(email=email).first()
+
+        if user:
+            otp = random.randint(100000, 999999)
+            user.otp = otp
+            user.otp_expiration = timezone.now() + datetime.timedelta(minutes=10)
+            user.save()
+
+            send_mail(
+                'Password Reset OTP',
+                f'Your OTP for password reset is {otp}',
+                'no-reply@gmail.com',
+                [email],
+            )
+        
+        return Response({'message': 'If your email is registered, you will receive an OTP for password reset'}, status=status.HTTP_200_OK)
+    
+class PasswordResetConfirmView(APIView):
+
+    permission_classes = (permissions.AllowAny, )
+
+    def post(self, request):
+        data = self.request.data
+
+        email = data['email']
+        otp = data['otp']
+        new_password = request.data.get('new_password')
+
+        if not email or not otp or not new_password:
+            return Response({'error': 'Email, OTP, and New password are required'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        user = User.objects.filter(email=email, otp=otp).first()
+
+        if not user or user.otp_expiration < timezone.now():
+            return Response({'error':'Invalid OTP or OTP has expired'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        user.set_password(new_password)
+        user.otp = ''
+        user.opt_expiration = None
+        user.save()
+
+        return Response({'message': 'Password reset successfully'}, status=status.HTTP_200_OK)
+    
+
