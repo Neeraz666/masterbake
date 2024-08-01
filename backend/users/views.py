@@ -85,7 +85,7 @@ class PasswordResetRequestView(APIView):
         user = User.objects.filter(email=email).first()
 
         if not user:
-            return Response({'error': 'You are not registered.'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'error': f'{email} is not registered in MasterBake. Please check your email.'}, status=status.HTTP_400_BAD_REQUEST)
 
         otp = random.randint(100000, 999999)
         user.otp = otp

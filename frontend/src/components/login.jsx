@@ -118,7 +118,7 @@ export const Login = () => {
                   <input type="checkbox" id="check" />
                   <label htmlFor="check">Remember me</label>
                 </span>
-                <a href="#" className="forgot_pw">Forgot password?</a>
+                <a href="/resetpassword" className="forgot_pw">Forgot password?</a>
               </div>
               <button className="button">Login Now</button>
               <div className="login_signup">
