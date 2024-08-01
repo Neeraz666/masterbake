@@ -84,20 +84,22 @@ class PasswordResetRequestView(APIView):
         
         user = User.objects.filter(email=email).first()
 
-        if user:
-            otp = random.randint(100000, 999999)
-            user.otp = otp
-            user.otp_expiration = timezone.now() + datetime.timedelta(minutes=10)
-            user.save()
+        if not user:
+            return Response({'error': f'{email} is not registered in MasterBake. Please check your email.'}, status=status.HTTP_400_BAD_REQUEST)
 
-            send_mail(
-                'Password Reset OTP',
-                f'Your OTP for password reset is {otp}',
-                'no-reply@gmail.com',
-                [email],
-            )
+        otp = random.randint(100000, 999999)
+        user.otp = otp
+        user.otp_expiration = timezone.now() + datetime.timedelta(minutes=10)
+        user.save()
+
+        send_mail(
+            'Password Reset OTP',
+            f'Your OTP for password reset is {otp}',
+            'no-reply@gmail.com',
+            [email],
+        )
         
-        return Response({'message': 'If your email is registered, you will receive an OTP for password reset'}, status=status.HTTP_200_OK)
+        return Response({'message': 'You will receive an OTP for password reset. Please check your mail.'}, status=status.HTTP_200_OK)
     
 class PasswordResetConfirmView(APIView):
 
@@ -120,7 +122,7 @@ class PasswordResetConfirmView(APIView):
         
         user.set_password(new_password)
         user.otp = ''
-        user.opt_expiration = None
+        user.otp_expiration = None
         user.save()
 
         return Response({'message': 'Password reset successfully'}, status=status.HTTP_200_OK)

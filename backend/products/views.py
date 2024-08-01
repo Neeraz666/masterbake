@@ -42,11 +42,8 @@ class SearchProduct(ListAPIView):
     serializer_class = ProductSerializer
 
     def get_queryset(self):
-        print("get_queryset called")  # Direct debug statement
         query = self.request.query_params.get('q', None)
-        print(f"Received query: {query}")  # Debug statement
         if query:
-            queryset = Product.objects.filter(Q(name__icontains=query) | Q(slug__icontains=query)).order_by('id')
-            print(f"Generated queryset: {queryset}")  # Debug statement
+            queryset = Product.objects.filter(Q(name__icontains=query) | Q(slug__icontains=query)).order_by('id') or Product.objects.filter(Q(name__icontains=query[:3]) | Q(slug__icontains=query[:3])).order_by('id')
             return queryset
         return Product.objects.none()

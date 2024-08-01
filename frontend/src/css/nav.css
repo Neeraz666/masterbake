@@ -59,13 +59,13 @@ li {
   /* Necessary for the dropdown menu */
 }
 
-a {
+Nav a {
   color: rgb(0, 0, 0);
   text-decoration: none;
   position: relative;
 }
 
-a::after {
+Nav a::after {
   content: '';
   display: block;
   width: 0;
@@ -77,11 +77,11 @@ a::after {
   left: 0;
 }
 
-a:hover::after {
+Nav a:hover::after {
   width: 100%;
 }
 
-a.logo-link:hover::after {
+Nav a.logo-link:hover::after {
   width: 0;
 }
 
@@ -144,7 +144,7 @@ a.logo-link:hover::after {
   position: relative;
   overflow: hidden;
   animation: pulse 2s infinite alternate;
-  filter: drop-shadow(1px 1px 10px rgb(235, 188, 105));
+  filter: drop-shadow(1px 1px 10px rgba(213, 191, 102, 0.521));
 }
 
 @keyframes pulse {

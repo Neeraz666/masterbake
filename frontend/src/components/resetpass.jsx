@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../css/resetpass.css';
+import { Link } from 'react-router-dom';
 
 export const Resetpass = () => {
     const [email, setEmail] = useState('');
@@ -16,6 +17,8 @@ export const Resetpass = () => {
                 setStep('reset');
             })
             .catch(error => {
+                const errormsg = error.response?.data?.error
+                alert(errormsg)
                 console.error('There was an error!', error);
             });
     };
@@ -26,6 +29,7 @@ export const Resetpass = () => {
             .then(response => {
                 alert(response.data.message);
                 setStep('request'); // Reset to initial state after successful password reset
+                window.location.href = '/login'
             })
             .catch(error => {
                 console.error('There was an error!', error);
@@ -48,6 +52,7 @@ export const Resetpass = () => {
                             <i className="email"></i>
                         </div>
                         <button type="submit" className="button">Send OTP</button>
+                        <Link to="/login"><button type="button" className='button'>Back</button></Link>
                     </form>
                 ) : (
                     <form onSubmit={handleResetSubmit}>
@@ -80,6 +85,7 @@ export const Resetpass = () => {
                             <i className="password"></i>
                         </div>
                         <button type="submit" className="button">Reset Password</button>
+                        <Link to="/resetpassword"><button type="button" className='button'>Back</button></Link>
                     </form>
                 )}
             </div>
