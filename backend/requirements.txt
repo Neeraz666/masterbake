@@ -5,4 +5,4 @@ djangorestframework-simplejwt
 Pillow
 psycopg
 psycopg2-binary
-
+python-dotenv
