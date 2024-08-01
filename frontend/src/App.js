@@ -4,6 +4,7 @@ import { Nav } from './components/nav';
 import { Home } from './components/home';
 import { Footer } from './components/footer';
 import { Login } from './components/login';
+import { Resetpass } from './components/resetpass';
 import { About } from './components/about';
 import { Category } from './components/category';
 import { Product } from './components/product';
@@ -71,6 +72,7 @@ function App() {
         <Route path='products/:categoryName' element={<Category />} />
         <Route path='products/:categoryName/:productSlug' element={<Product />} />
         <Route path='login' element={<Login />} />
+        <Route path='resetpassword' element={<Resetpass />} />
         <Route path="cart" element={<Cart />} />  
         <Route path="checkout" element={<Checkout />} />
         <Route path="order" element={<Order />} />

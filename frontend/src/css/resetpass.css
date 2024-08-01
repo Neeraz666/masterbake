@@ -1,0 +1,112 @@
+/* Import Google font - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.resetdiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f8f3f3;
+}
+
+.resetform_container {
+    max-width: 320px;
+    width: 100%;
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.1);
+}
+
+.resetform_container h2 {
+    font-size: 22px;
+    color: #0b0217;
+    text-align: center;
+}
+
+.reset_input_box {
+    position: relative;
+    margin-top: 30px;
+    width: 100%;
+    height: 40px;
+}
+
+.reset_input_box input {
+    height: 100%;
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 0 30px;
+    color: #333;
+    transition: all 0.2s ease;
+    border-bottom: 1.5px solid #aaaaaa;
+}
+
+.reset_input_box input:focus {
+    border-color: #7d2ae8;
+}
+
+.reset_input_box i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #707070;
+}
+
+.reset_input_box i.email,
+.reset_input_box i.otp,
+.reset_input_box i.password {
+    left: 0;
+}
+
+.reset_input_box input:focus ~ i.email,
+.reset_input_box input:focus ~ i.otp,
+.reset_input_box input:focus ~ i.password {
+    color: #7d2ae8;
+}
+
+.reset_option_field {
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.resetform_container a {
+    color: #7d2ae8;
+    font-size: 12px;
+}
+
+.resetform_container a:hover {
+    text-decoration: underline;
+}
+
+.resetform_container .button {
+    background: #eaebde;
+    margin-top: 30px;
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 10px;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.resetform_container .button:hover {
+    background-color: #d4d4d4;
+}
+
+.reset_login_signup {
+    font-size: 12px;
+    text-align: center;
+    margin-top: 15px;
+}
